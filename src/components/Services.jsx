@@ -97,13 +97,13 @@ export default function Services() {
           {/* arrows */}
           <button
             onClick={prev}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-3 rounded-full hover:bg-indigo-600 hover:text-white transition"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white  p-3 rounded-full hover:bg-indigo-600 hover:text-white transition"
           >
             <ChevronLeft />
           </button>
           <button
             onClick={next}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-3 rounded-full hover:bg-indigo-600 hover:text-white transition"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white  p-3 rounded-full hover:bg-indigo-600 hover:text-white transition"
           >
             <ChevronRight />
           </button>
@@ -114,7 +114,7 @@ export default function Services() {
               {slides.map((s, i) => (
                 <div
                   key={i}
-                  className="min-w-full md:min-w-[50%] xl:min-w-[33.33%] bg-white rounded-2xl shadow-xl overflow-hidden group"
+                  className="min-w-full md:min-w-[50%] xl:min-w-[33.33%] bg-white rounded-2xl border border-[#ddd] overflow-hidden group"
                 >
                   <div className="h-56 overflow-hidden">
                     <img

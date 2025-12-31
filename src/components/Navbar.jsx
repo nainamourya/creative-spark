@@ -85,7 +85,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:block">
             <Link
-              to="/get-started"
+              to="/contact"
               className="relative px-6 py-2.5 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg hover:shadow-indigo-500/40 transition-all"
             >
               Get Started
@@ -150,7 +150,7 @@ export default function Navbar() {
             </li>
 
             <Link
-              to="/get-started"
+              to="/contact"
               onClick={() => setOpen(false)}
               className="mt-10 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg text-center"
             >
