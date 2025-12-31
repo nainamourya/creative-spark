@@ -2,15 +2,17 @@ import { useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { gsap } from "gsap";
 import { Mail, Phone, MapPin, Sparkles, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ContactPage() {
   const form = useRef();
   const pageRef = useRef(null);
   const floatRefs = useRef([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     gsap.from(pageRef.current, {
-      opacity: 0,
+      // opacity: 0,
       y: 60,
       duration: 1,
       ease: "power3.out",
@@ -30,6 +32,8 @@ export default function ContactPage() {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    const userName = form.current.name.value;
+
     emailjs
       .sendForm(
         "service_hfcky1d",
@@ -39,7 +43,9 @@ export default function ContactPage() {
       )
       .then(
         () => {
-          alert("Message sent successfully 🚀");
+          navigate("/thank-you", {
+            state: { name: userName },
+          });
           form.current.reset();
         },
         (error) => {
@@ -52,7 +58,7 @@ export default function ContactPage() {
   return (
     <section
       ref={pageRef}
-      className="relative min-h-screen pt-32 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 overflow-hidden"
+      className="relative min-h-screen pt-32 pb-32 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 overflow-hidden"
     >
       {/* Floating Icons */}
       <Sparkles
@@ -95,7 +101,7 @@ export default function ContactPage() {
         </div>
 
         {/* RIGHT – FORM */}
-        <div className="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl">
+        <div className="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl relative z-10">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
             Contact Form
           </h2>

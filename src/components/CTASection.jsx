@@ -8,7 +8,7 @@ export default function CTASection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(sectionRef.current, {
-        y: 80,
+        y: 100,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
@@ -18,9 +18,8 @@ export default function CTASection() {
         },
       });
 
-      // 🔁 Floating SVG animation
       gsap.to(iconRef.current, {
-        y: -12,
+        y: -14,
         repeat: -1,
         yoyo: true,
         duration: 2,
@@ -34,49 +33,73 @@ export default function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 px-6 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 overflow-hidden"
+      aria-labelledby="cta-heading"
+      className="relative py-32 px-6 overflow-hidden bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600"
     >
-      {/* ✨ Glow blobs */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+      {/* Glow effects */}
+      <div className="absolute -top-24 -left-24 w-80 h-80 bg-white/20 blur-3xl rounded-full" />
+      <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/20 blur-3xl rounded-full" />
 
-      <div className="relative max-w-5xl mx-auto text-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-12 shadow-2xl">
-        {/* 🔔 Animated SVG Icon */}
+      <div className="relative max-w-5xl mx-auto text-center bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[2.5rem] p-14 shadow-2xl">
+        {/* Animated Icon */}
         <div
           ref={iconRef}
-          className="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-white/20"
+          className="mx-auto mb-8 w-24 h-24 rounded-full flex items-center justify-center bg-white/15 ring-1 ring-white/30"
         >
           <svg
             viewBox="0 0 24 24"
             fill="none"
-            className="w-10 h-10 text-white"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.6"
+            className="w-12 h-12 text-white"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M12 6v6l4 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              d="M3 12l9-9 9 9M4.5 10.5V21a1.5 1.5 0 001.5 1.5h3a1.5 1.5 0 001.5-1.5v-3h3v3a1.5 1.5 0 001.5 1.5h3A1.5 1.5 0 0019.5 21V10.5"
             />
           </svg>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Ready to Transform Your Mind?
+        {/* SEO Heading */}
+        <h2
+          id="cta-heading"
+          className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight"
+        >
+          Professional Web Design & React Development Services
         </h2>
-        <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-          Take the first step toward clarity, confidence, and emotional freedom.
-          Our experts are here to guide your journey.
+
+        {/* SEO Paragraph */}
+        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+          Looking for a modern, fast, and SEO-optimized website? We build{" "}
+          <strong>custom React websites</strong> that help businesses grow,
+          convert visitors into customers, and rank higher on Google. From
+          startups to established brands, our web development solutions are
+          designed for performance, scalability, and long-term success.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-4 rounded-full bg-white text-indigo-700 font-semibold hover:scale-105 transition shadow-lg">
-            Book a Free Session
-          </button>
-          <button className="px-8 py-4 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition">
-            Learn More
-          </button>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-5 justify-center">
+          <a
+            href="/contact"
+            className="px-10 py-4 rounded-full bg-white text-indigo-700 font-semibold text-lg shadow-xl hover:scale-105 transition-transform"
+          >
+            Get a Free Website Consultation
+          </a>
+
+          <a
+            href="/services/website-design"
+            className="px-10 py-4 rounded-full border border-white/40 text-white font-semibold text-lg hover:bg-white/10 transition"
+          >
+            View Our Web Design Services
+          </a>
         </div>
+
+        {/* Micro SEO text */}
+        <p className="mt-10 text-sm text-white/70">
+          Trusted web designers & React developers in India delivering modern,
+          conversion-focused websites.
+        </p>
       </div>
     </section>
   );

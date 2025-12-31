@@ -9,6 +9,8 @@ import Services from "./components/Services";
 import CTASection from "./components/CTASection";
 import BlogSection from "./components/BlogSection";
 import About from "./components/Pages/About";
+import WhatsAppButton from "./components/WhatsAppButton"; // ✅ ADD THIS
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import WebsiteDesign from "./components/Pages/WebsiteDesign";
@@ -18,6 +20,7 @@ import PostDesign from "./components/Pages/PostDesign";
 import BlogPage from "./components/Pages/BlogPage";
 import BlogDetail from "./components/Pages/BlogDetail";
 import ContactPage from "./components/Pages/ContactPage";
+import ThankYou from "./components/Pages/ThankYou";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,19 +44,24 @@ function App() {
           }
         />
 
-        {/* ✅ About page */}
+        {/* ✅ Pages */}
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/thank-you" element={<ThankYou />} />
 
-        {/* ✅ Services pages */}
+        {/* ✅ Services */}
         <Route path="/services/website-design" element={<WebsiteDesign />} />
         <Route path="/services/advanced-seo" element={<AdvancedSEO />} />
         <Route path="/services/logo-design" element={<LogoDesign />} />
         <Route path="/services/post-design" element={<PostDesign />} />
       </Routes>
+
       <Footer />
+
+      {/* ✅ WhatsApp Floating Button (GLOBAL) */}
+      <WhatsAppButton />
     </Router>
   );
 }
