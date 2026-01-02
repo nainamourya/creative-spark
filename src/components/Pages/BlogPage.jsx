@@ -1,14 +1,15 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   PenTool,
   TrendingUp,
   Layout,
   Search,
   Sparkles,
-  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,72 +21,69 @@ export default function BlogPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animation
+      // HERO
       gsap.from(".blog-hero", {
-        y: 80,
-        opacity: 0,
+        y: 60,
+        // opacity: 0,
         duration: 1,
         ease: "power3.out",
       });
 
-      // Floating SVG icons
-      gsap.utils.toArray(".float-icon").forEach((el, i) => {
-        gsap.to(el, {
-          y: i % 2 === 0 ? -20 : 20,
-          duration: 3 + i,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-
-      // Blog cards scroll animation
-      cardsRef.current.forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-          },
-          y: 80,
-          opacity: 0,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: "power3.out",
-        });
+      // BLOG CARDS
+      gsap.from(cardsRef.current, {
+        y: 50,
+        // opacity: 0,
+        stagger: 0.12,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  // 👉 BLOG DATA WITH SEO SLUGS
   const blogs = [
     {
-      title: "Modern Website Design Trends for 2025",
-      desc: "Explore the latest UI/UX trends that help brands stand out and convert visitors.",
-      slug: "modern-website-design-trends-2025",
-      icon: <Layout className="w-6 h-6" />,
+      title: "High-Converting Website Design Principles",
+      desc: "Design psychology, layout systems, and UX patterns used by premium brands to turn visitors into customers.",
+      slug: "high-converting-website-design",
+      icon: <Layout />,
     },
     {
-      title: "SEO Strategies That Actually Rank",
-      desc: "Proven SEO techniques to increase organic traffic and dominate search results.",
-      slug: "seo-strategies-that-rank",
-      icon: <Search className="w-6 h-6" />,
+      title: "Advanced SEO Strategies for Sustainable Growth",
+      desc: "A modern SEO framework focused on intent, authority, and long-term organic performance.",
+      slug: "advanced-seo-strategies",
+      icon: <Search />,
     },
     {
-      title: "How Digital Marketing Boosts Sales",
-      desc: "Learn how smart marketing funnels turn clicks into loyal customers.",
-      slug: "digital-marketing-boosts-sales",
-      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Building Digital Brands That Scale",
+      desc: "Positioning, identity systems, and consistency frameworks used by growing digital brands.",
+      slug: "building-scalable-digital-brands",
+      icon: <PenTool />,
+    },
+    {
+      title: "Turning Traffic Into Qualified Leads",
+      desc: "Conversion strategy, CRO techniques, and analytics-driven decision making.",
+      slug: "traffic-to-qualified-leads",
+      icon: <TrendingUp />,
+    },
+    {
+      title: "Data-Driven Marketing Decisions",
+      desc: "Using analytics, performance metrics, and insights to guide smarter growth strategies.",
+      slug: "data-driven-marketing",
+      icon: <BarChart3 />,
     },
   ];
 
-  // 👉 GSAP PAGE TRANSITION BEFORE ROUTE CHANGE
   const handleRedirect = (slug) => {
     gsap.to(sectionRef.current, {
       opacity: 0,
-      y: -40,
-      duration: 0.5,
+      y: -30,
+      duration: 0.45,
       ease: "power2.inOut",
       onComplete: () => navigate(`/blog/${slug}`),
     });
@@ -94,52 +92,59 @@ export default function BlogPage() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-white to-indigo-50 py-28 overflow-hidden"
+      className="relative py-36 bg-[#0B0B0B] text-white overflow-hidden"
     >
-      {/* Floating SVG Icons */}
-      <Sparkles className="float-icon absolute top-20 left-10 text-indigo-400 opacity-30 w-16 h-16" />
-      <PenTool className="float-icon absolute top-40 right-16 text-purple-400 opacity-30 w-16 h-16" />
+      {/* SOFT GOLD GLOW */}
+      <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#C6A75E]/15 blur-[220px]" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      {/* DECOR ICON */}
+      <Sparkles className="absolute top-24 left-20 w-12 h-12 text-[#C6A75E]/20" />
+
+      <div className="relative max-w-7xl mx-auto px-6">
         {/* HERO */}
-        <header className="blog-hero text-center max-w-3xl mx-auto mb-20">
-          <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            Web Design & Digital Marketing Insights
+        <header className="blog-hero text-center max-w-4xl mx-auto mb-28">
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold mb-6">
+            Insights
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Ideas, strategy & insights
+            <br />
+            <span className="text-[#C6A75E]">for digital growth</span>
           </h1>
-          <p className="mt-6 text-gray-600 text-lg">
-            Premium insights, trends, and strategies to grow your brand online.
+
+          <p className="mt-8 text-lg text-gray-400 max-w-2xl mx-auto">
+            Thoughtful perspectives on web design, SEO, and digital strategy —
+            written for founders, teams, and serious brands.
           </p>
         </header>
 
         {/* BLOG GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
           {blogs.map((blog, i) => (
             <article
               key={blog.slug}
               ref={(el) => (cardsRef.current[i] = el)}
-              className="group relative bg-white/70 backdrop-blur-xl border border-white/30 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all"
+              className="group relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-[#C6A75E]/40 transition-all duration-500"
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 mb-6 group-hover:scale-110 transition">
+              {/* ICON */}
+              <div className="w-14 h-14 mb-8 flex items-center justify-center rounded-2xl bg-[#C6A75E]/15 text-[#C6A75E] group-hover:scale-110 transition">
                 {blog.icon}
               </div>
 
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <h2 className="text-xl font-semibold leading-snug">
                 {blog.title}
               </h2>
 
-              <p className="text-gray-600 mb-6 leading-relaxed">{blog.desc}</p>
+              <p className="mt-4 text-gray-400 leading-relaxed">{blog.desc}</p>
 
-              {/* ✅ SEO LINK + GSAP TRANSITION */}
               <button
                 onClick={() => handleRedirect(blog.slug)}
-                className="flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-3 transition"
-                aria-label={`Read more about ${blog.title}`}
+                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#C6A75E] tracking-wide"
+                aria-label={`Read ${blog.title}`}
               >
-                Read More <ArrowRight className="w-4 h-4" />
+                Read Article <ArrowUpRight size={16} />
               </button>
-
-              {/* Glow */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition pointer-events-none"></div>
             </article>
           ))}
         </div>

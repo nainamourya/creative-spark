@@ -9,36 +9,52 @@ export default function ThankYou() {
   const name = location.state?.name || "there";
 
   useEffect(() => {
-    gsap.from(".thank-box", {
-      y: 40,
-      //   opacity: 0,
+    gsap.from(".thank-card", {
+      y: 50,
+      // opacity: 0,
       duration: 1,
       ease: "power3.out",
     });
 
     const timer = setTimeout(() => {
       navigate("/");
-    }, 5000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 px-6">
-      <div className="thank-box bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl p-10 text-center max-w-md w-full">
-        <CheckCircle className="mx-auto w-16 h-16 text-green-500 mb-6" />
+    <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B] px-6">
+      <div className="thank-card relative bg-white rounded-3xl shadow-2xl p-12 text-center max-w-md w-full">
+        {/* ICON */}
+        <div className="mx-auto mb-8 w-16 h-16 flex items-center justify-center rounded-full bg-[#C6A75E]/20">
+          <CheckCircle className="w-10 h-10 text-[#C6A75E]" />
+        </div>
 
+        {/* TITLE */}
         <h1 className="text-3xl font-extrabold text-gray-900 mb-4">
-          Thank You, {name} 🙌
+          Thank you, {name}
         </h1>
 
+        {/* MESSAGE */}
         <p className="text-gray-600 text-lg leading-relaxed">
-          Your message has been sent successfully. I’ll get back to you within
-          24 hours.
+          Your message has been received successfully.
+          <br />
+          We’ll review your request and get back to you within{" "}
+          <span className="font-semibold text-gray-900">24 hours</span>.
         </p>
 
+        {/* TRUST LINE */}
         <p className="mt-6 text-sm text-gray-500">
-          Redirecting to home page...
+          You’re in good hands — we only take on projects we can truly elevate.
+        </p>
+
+        {/* DIVIDER */}
+        <div className="my-8 h-px w-full bg-gray-200" />
+
+        {/* REDIRECT INFO */}
+        <p className="text-sm text-gray-500">
+          Redirecting you to the homepage…
         </p>
       </div>
     </section>

@@ -10,7 +10,6 @@ export default function AboutUs() {
     const ctx = gsap.context(() => {
       gsap.from(itemRefs.current, {
         y: 40,
-        // opacity: 0,
         stagger: 0.15,
         duration: 0.9,
         ease: "power3.out",
@@ -31,21 +30,21 @@ export default function AboutUs() {
         ref={sectionRef}
         className="relative py-32 bg-[#0B0B0B] text-white overflow-hidden"
       >
-        {/* Soft luxury glows */}
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#08f0a5]/25 rounded-full blur-[180px]" />
-        <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-[#C6A75E]/15 rounded-full blur-[180px]" />
+        {/* Soft luxury gold glows */}
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#C6A75E]/20 rounded-full blur-[180px]" />
+        <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-[#C6A75E]/10 rounded-full blur-[180px]" />
 
         <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* LEFT – STORY */}
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#08f0a5] font-semibold">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#C6A75E] font-semibold">
               About Us
             </p>
 
             <h2 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight">
               We craft digital experiences
               <br />
-              that <span className="text-[#08f0a5]">feel premium</span> and
+              that <span className="text-[#C6A75E]">feel premium</span> and
               perform.
             </h2>
 
@@ -98,7 +97,7 @@ export default function AboutUs() {
       {/* IMPACT STRIP */}
       <section className="bg-black py-28 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.35em] text-[#08f0a5] mb-12 font-semibold">
+          <p className="text-xs uppercase tracking-[0.35em] text-[#C6A75E] mb-12 font-semibold">
             Selected Impact
           </p>
 
@@ -118,7 +117,7 @@ export default function AboutUs() {
               },
             ].map((item, i) => (
               <div key={i}>
-                <div className="h-[2px] w-12 bg-[#08f0a5] mb-6" />
+                <div className="h-[2px] w-12 bg-[#C6A75E] mb-6" />
                 <h3 className="text-xl font-semibold text-white">
                   {item.title}
                 </h3>
@@ -136,9 +135,9 @@ export default function AboutUs() {
 const ValueCard = ({ icon, title, text, refEl }) => (
   <div
     ref={refEl}
-    className="flex items-start gap-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-[#08f0a5]/40 transition"
+    className="flex items-start gap-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-[#C6A75E]/40 transition"
   >
-    <div className="p-3 rounded-xl bg-[#08f0a5]/20 text-[#08f0a5]">{icon}</div>
+    <div className="p-3 rounded-xl bg-[#C6A75E]/15 text-[#C6A75E]">{icon}</div>
     <div>
       <h4 className="text-lg font-semibold text-white">{title}</h4>
       <p className="mt-2 text-gray-400 leading-relaxed">{text}</p>

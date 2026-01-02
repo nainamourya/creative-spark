@@ -1,124 +1,199 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Brush, Sparkles, PenTool, Shapes, ArrowRight } from "lucide-react";
+import { PenTool, Layers, Sparkles, Shapes, ArrowUpRight } from "lucide-react";
 
 export default function LogoDesign() {
   const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const revealRefs = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".logo-title", {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-      });
-
-      gsap.from(".logo-sub", {
-        y: 40,
-        opacity: 0,
-        delay: 0.3,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(cardsRef.current, {
-        y: 80,
+      gsap.from(revealRefs.current, {
+        y: 50,
         // opacity: 0,
-        stagger: 0.2,
-        duration: 1,
+        stagger: 0.14,
+        duration: 0.9,
         ease: "power3.out",
-        delay: 0.6,
-      });
-
-      gsap.to(".float-svg", {
-        y: -20,
-        repeat: -1,
-        yoyo: true,
-        duration: 3,
-        ease: "sine.inOut",
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const features = [
-    {
-      icon: <Brush className="w-8 h-8 text-pink-500" />,
-      title: "Creative Concepts",
-      desc: "Unique logo ideas crafted for your brand identity.",
-    },
-    {
-      icon: <PenTool className="w-8 h-8 text-indigo-500" />,
-      title: "Custom Design",
-      desc: "Every logo is designed from scratch, no templates.",
-    },
-    {
-      icon: <Shapes className="w-8 h-8 text-emerald-500" />,
-      title: "Modern Style",
-      desc: "Trendy, minimal & timeless visual aesthetics.",
-    },
-    {
-      icon: <Sparkles className="w-8 h-8 text-yellow-500" />,
-      title: "Brand Impact",
-      desc: "Logos that leave a powerful first impression.",
-    },
-  ];
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-28 bg-gradient-to-br from-slate-950 via-indigo-950 to-black text-white overflow-hidden"
-    >
-      {/* 🔮 Floating SVG Background */}
-      <svg
-        className="float-svg absolute top-10 left-10 w-72 h-72 opacity-30 blur-2xl"
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill="#6366F1"
-          d="M46.5,-63.1C59.7,-53.3,69.6,-39.6,73.4,-24.2C77.3,-8.9,75.2,8.1,69.5,23.5C63.9,38.8,54.7,52.5,41.8,61.7C28.8,70.9,12.1,75.6,-3.7,80.3C-19.4,85,-38.8,89.7,-53.7,82.3C-68.6,74.9,-79,55.4,-83.7,35.1C-88.3,14.9,-87.2,-6,-80.4,-23.6C-73.6,-41.2,-61.1,-55.5,-46.4,-64.4C-31.7,-73.2,-15.8,-76.6,0.6,-77.4C16.9,-78.1,33.8,-76.1,46.5,-63.1Z"
-          transform="translate(100 100)"
-        />
-      </svg>
+    <main ref={sectionRef} className="bg-[#0B0B0B] text-white overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative py-36 px-6 text-center">
+        {/* Gold ambient glow */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#C6A75E]/15 blur-[220px]" />
 
-      {/* ✨ Content */}
-      <div className="relative max-w-7xl mx-auto px-6 text-center">
-        <h1 className="logo-title text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-purple-500 bg-clip-text text-transparent">
-          Logo Design That Speaks Your Brand
-        </h1>
+        <div
+          ref={(el) => (revealRefs.current[0] = el)}
+          className="relative max-w-5xl mx-auto"
+        >
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
+            Logo & Brand Identity
+          </p>
 
-        <p className="logo-sub mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-          We craft bold, memorable, and modern logos that define your identity
-          and elevate your business.
-        </p>
+          <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
+            Logos crafted with
+            <br />
+            <span className="text-[#C6A75E]">meaning & precision</span>
+          </h1>
 
-        <button className="mt-10 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-500 transition text-white font-semibold shadow-lg">
-          Get Started <ArrowRight className="w-5 h-5" />
-        </button>
+          <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            We design timeless logos and brand marks that communicate trust,
+            clarity, and credibility — built to scale with your brand.
+          </p>
 
-        {/* 🧩 Icon Cards */}
-        <div className="mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((item, i) => (
+          <a
+            href="/contact"
+            className="inline-flex mt-10 items-center gap-3 px-10 py-4 rounded-full bg-[#C6A75E] text-black font-semibold hover:scale-105 transition"
+          >
+            Start Your Brand <ArrowUpRight />
+          </a>
+        </div>
+      </section>
+
+      {/* ================= PHILOSOPHY ================= */}
+      <section className="py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          <div ref={(el) => (revealRefs.current[1] = el)}>
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
+              Branding is not decoration.
+              <br />
+              <span className="text-[#C6A75E]">It’s communication.</span>
+            </h2>
+
+            <p className="mt-8 text-lg text-gray-400 leading-relaxed max-w-xl">
+              A logo is the foundation of your brand system. It must work across
+              screens, cultures, and time — without relying on trends.
+            </p>
+
+            <p className="mt-6 text-lg text-gray-400 leading-relaxed max-w-xl">
+              We focus on form, meaning, and usability to create logos that feel
+              confident, premium, and instantly recognizable.
+            </p>
+          </div>
+
+          <div
+            ref={(el) => (revealRefs.current[2] = el)}
+            className="p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
+          >
+            <Layers className="w-16 h-16 text-[#C6A75E] mb-6" />
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Every logo we design is built as a system — adaptable, scalable,
+              and aligned with your brand’s long-term vision.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FEATURES ================= */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+          {[
+            {
+              icon: <PenTool />,
+              title: "Concept-driven",
+              desc: "Each logo starts with strategy, not sketches.",
+            },
+            {
+              icon: <Shapes />,
+              title: "Custom crafted",
+              desc: "Designed from scratch — no templates, ever.",
+            },
+            {
+              icon: <Sparkles />,
+              title: "Timeless aesthetic",
+              desc: "Minimal forms that age gracefully.",
+            },
+            {
+              icon: <Layers />,
+              title: "Scalable systems",
+              desc: "Built to work across all touchpoints.",
+            },
+          ].map((item, i) => (
             <div
               key={i}
-              ref={(el) => (cardsRef.current[i] = el)}
-              className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(99,102,241,0.4)]"
+              ref={(el) => (revealRefs.current[i + 3] = el)}
+              className="p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
             >
-              <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/10 mb-6 group-hover:scale-110 transition">
+              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-xl bg-[#C6A75E]/15 text-[#C6A75E]">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+
+              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <p className="mt-4 text-gray-400 text-sm leading-relaxed">
                 {item.desc}
               </p>
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ================= PROCESS ================= */}
+      <section className="py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2
+            ref={(el) => (revealRefs.current[7] = el)}
+            className="text-4xl md:text-5xl font-extrabold mb-20"
+          >
+            Our branding process
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-12">
+            {[
+              { step: "01", title: "Research", desc: "Brand & market clarity" },
+              {
+                step: "02",
+                title: "Concept",
+                desc: "Visual direction & meaning",
+              },
+              { step: "03", title: "Refine", desc: "Precision & balance" },
+              { step: "04", title: "Deliver", desc: "Brand-ready assets" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                ref={(el) => (revealRefs.current[i + 8] = el)}
+                className="p-8 rounded-3xl bg-white/5 border border-white/10"
+              >
+                <p className="text-5xl font-extrabold text-[#C6A75E] mb-4">
+                  {item.step}
+                </p>
+                <h4 className="text-xl font-semibold">{item.title}</h4>
+                <p className="mt-2 text-gray-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-36 px-6 text-center">
+        <div
+          ref={(el) => (revealRefs.current[12] = el)}
+          className="max-w-4xl mx-auto p-16 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Let’s create a logo
+            <br />
+            <span className="text-[#C6A75E]">your brand can own</span>
+          </h2>
+
+          <p className="mt-8 text-lg text-gray-400">
+            A strong brand starts with a mark that feels intentional and
+            unforgettable.
+          </p>
+
+          <a
+            href="/contact"
+            className="inline-flex mt-10 items-center gap-3 px-10 py-4 rounded-full bg-[#C6A75E] text-black font-semibold hover:scale-105 transition"
+          >
+            Begin Your Brand Identity <ArrowUpRight />
+          </a>
+        </div>
+      </section>
+    </main>
   );
 }

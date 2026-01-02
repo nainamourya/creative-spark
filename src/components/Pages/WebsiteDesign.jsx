@@ -2,49 +2,32 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Globe,
-  Layers,
-  Sparkles,
-  Code2,
+  Layout,
   Smartphone,
+  Code2,
   Rocket,
+  Layers,
+  ArrowUpRight,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WebsiteDesign() {
   const sectionRef = useRef(null);
-  const floatRefs = useRef([]);
+  const revealRefs = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 🌊 Floating SVG icons
-      floatRefs.current.forEach((el, i) => {
-        gsap.to(el, {
-          y: i % 2 === 0 ? -30 : 30,
-          duration: 3 + i,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-
-      // ✨ Fade-in sections
-      gsap.utils.toArray(".reveal").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-            },
-          }
-        );
+      gsap.from(revealRefs.current, {
+        y: 60,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
       });
     }, sectionRef);
 
@@ -52,185 +35,166 @@ export default function WebsiteDesign() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-black to-purple-950 text-white"
-    >
-      {/* 🔮 Floating SVG Icons */}
-      <Globe
-        ref={(el) => (floatRefs.current[0] = el)}
-        className="absolute top-20 left-10 text-indigo-500/40"
-        size={80}
-      />
-      <Sparkles
-        ref={(el) => (floatRefs.current[1] = el)}
-        className="absolute top-40 right-16 text-purple-400/40"
-        size={70}
-      />
-      <Layers
-        ref={(el) => (floatRefs.current[2] = el)}
-        className="absolute bottom-40 left-16 text-indigo-400/40"
-        size={90}
-      />
+    <main ref={sectionRef} className="bg-[#0B0B0B] text-white overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative py-36 px-6">
+        {/* GOLD GLOW */}
+        <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#C6A75E]/15 blur-[220px]" />
 
-      {/* 🌟 HERO */}
-      <div className="min-h-screen flex items-center justify-center text-center px-6">
-        <div className="reveal max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-            Website Design That Converts
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-300">
-            We craft immersive, fast, and user-focused websites that elevate
-            your brand and drive results.
+        <div
+          ref={(el) => (revealRefs.current[0] = el)}
+          className="relative max-w-5xl mx-auto text-center"
+        >
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
+            Website Design
           </p>
 
-          <button className="mt-10 px-10 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg hover:scale-105 transition font-semibold">
-            Get Started 🚀
-          </button>
-        </div>
-      </div>
+          <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
+            Websites designed to
+            <br />
+            <span className="text-[#C6A75E]">convert & scale</span>
+          </h1>
 
-      {/* 💎 FEATURES */}
-      <div className="py-32 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+          <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            We design and build modern websites that feel premium, load fast,
+            and guide users toward action — without noise or clutter.
+          </p>
+        </div>
+      </section>
+
+      {/* ================= FEATURES ================= */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-14">
           {[
             {
-              icon: <Smartphone size={40} />,
-              title: "Responsive Design",
-              desc: "Perfect experience across all devices.",
+              icon: <Layout />,
+              title: "Interface Design",
+              desc: "Clean, timeless layouts designed to build trust and guide users intuitively.",
             },
             {
-              icon: <Code2 size={40} />,
-              title: "Clean Code",
-              desc: "Scalable, maintainable modern codebase.",
+              icon: <Smartphone />,
+              title: "Responsive Experience",
+              desc: "Mobile-first systems that adapt beautifully across all devices.",
             },
             {
-              icon: <Rocket size={40} />,
-              title: "High Performance",
-              desc: "Optimized for speed and conversions.",
+              icon: <Code2 />,
+              title: "Modern Development",
+              desc: "Scalable, maintainable code built with modern web technologies.",
             },
           ].map((item, i) => (
             <div
               key={i}
-              className="reveal relative p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl hover:-translate-y-2 transition"
+              ref={(el) => (revealRefs.current[i + 1] = el)}
+              className="p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
             >
-              <div className="mb-6 text-indigo-400">{item.icon}</div>
-              <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-400">{item.desc}</p>
+              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-xl bg-[#C6A75E]/15 text-[#C6A75E]">
+                {item.icon}
+              </div>
 
-              {/* glow */}
-              <div className="absolute -inset-4 bg-indigo-500/20 blur-3xl -z-10 rounded-3xl" />
+              <h3 className="text-2xl font-semibold">{item.title}</h3>
+              <p className="mt-4 text-gray-400 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="py-32 px-6 bg-black/30">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="reveal">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Stunning Visual Experiences
+      {/* ================= STORY ================= */}
+      <section className="py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          <div ref={(el) => (revealRefs.current[4] = el)}>
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
+              Design that feels
+              <br />
+              <span className="text-[#C6A75E]">intentional</span>
             </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              From landing pages to full-scale platforms, we design interfaces
-              that captivate users and guide them to take action.
+
+            <p className="mt-8 text-lg text-gray-400 leading-relaxed max-w-xl">
+              We don’t design for trends. We design for clarity, usability, and
+              long-term impact — ensuring every screen serves a purpose.
             </p>
-            <ul className="space-y-4 text-gray-300">
-              <li>✨ Modern layouts & micro-interactions</li>
-              <li>⚡ Optimized assets for speed</li>
-              <li>📱 Mobile-first approach</li>
-              <li>🎯 Conversion-focused UI</li>
+
+            <ul className="mt-10 space-y-4 text-gray-400">
+              <li>• Conversion-focused layouts</li>
+              <li>• Clear visual hierarchy</li>
+              <li>• Performance-first mindset</li>
+              <li>• Brand-aligned aesthetics</li>
             </ul>
           </div>
 
-          <div className="reveal relative">
-            <img
-              src="/img/website1.png"
-              alt="Website Design Preview"
-              className="rounded-3xl shadow-2xl border border-white/10"
-            />
-            <img
-              src="/img/website3.png"
-              alt="Website UI"
-              className="absolute -bottom-10 -right-10 w-2/3 rounded-3xl shadow-2xl border border-white/10"
-            />
-            <div className="absolute -inset-6 bg-purple-500/20 blur-3xl -z-10 rounded-3xl" />
+          <div
+            ref={(el) => (revealRefs.current[5] = el)}
+            className="p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
+          >
+            <Layers className="w-16 h-16 text-[#C6A75E] mb-6" />
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Every project is approached as a system — not just a set of pages.
+              We design experiences that scale as your business grows.
+            </p>
           </div>
         </div>
-      </div>
-      {/* 🔁 PROCESS */}
-      <div className="py-32 px-6">
+      </section>
+
+      {/* ================= PROCESS ================= */}
+      <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="reveal text-4xl md:text-5xl font-bold mb-16">
-            Our Proven Process 🛠️
+          <h2
+            ref={(el) => (revealRefs.current[6] = el)}
+            className="text-4xl md:text-5xl font-extrabold mb-20"
+          >
+            Our design process
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="grid md:grid-cols-4 gap-12">
             {[
               {
                 step: "01",
                 title: "Discover",
-                desc: "Understand your goals & users.",
+                desc: "Understand goals & users",
               },
-              {
-                step: "02",
-                title: "Design",
-                desc: "Create stunning UI/UX systems.",
-              },
-              {
-                step: "03",
-                title: "Develop",
-                desc: "Build with clean modern code.",
-              },
-              { step: "04", title: "Launch", desc: "Deploy, test & scale." },
+              { step: "02", title: "Design", desc: "Create structure & UI" },
+              { step: "03", title: "Build", desc: "Develop with precision" },
+              { step: "04", title: "Launch", desc: "Test, refine & scale" },
             ].map((item, i) => (
               <div
                 key={i}
-                className="reveal p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10"
+                ref={(el) => (revealRefs.current[i + 7] = el)}
+                className="p-8 rounded-3xl bg-white/5 border border-white/10"
               >
-                <div className="text-5xl font-extrabold text-indigo-400 mb-4">
+                <p className="text-5xl font-extrabold text-[#C6A75E] mb-4">
                   {item.step}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
+                </p>
+                <h4 className="text-xl font-semibold">{item.title}</h4>
+                <p className="mt-2 text-gray-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
-      {/* 📊 STATS */}
-      <div className="py-24 px-6 bg-gradient-to-r from-indigo-900/40 to-purple-900/40">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-          {[
-            { num: "120+", label: "Projects Delivered" },
-            { num: "98%", label: "Client Satisfaction" },
-            { num: "2x", label: "Faster Load Time" },
-            { num: "5⭐", label: "Average Rating" },
-          ].map((item, i) => (
-            <div key={i} className="reveal">
-              <p className="text-4xl md:text-5xl font-extrabold text-indigo-400">
-                {item.num}
-              </p>
-              <p className="text-gray-300 mt-2">{item.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* 🎯 CTA */}
-      <div className="py-32 text-center px-6">
-        <div className="reveal max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Let’s Build Something Amazing ✨
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-36 px-6 text-center bg-black">
+        <div
+          ref={(el) => (revealRefs.current[11] = el)}
+          className="max-w-4xl mx-auto p-16 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Let’s build a website
+            <br />
+            <span className="text-[#C6A75E]">your brand deserves</span>
           </h2>
-          <p className="text-gray-300 mb-10">
-            Turn your idea into a high-impact digital experience.
+
+          <p className="mt-8 text-lg text-gray-400">
+            Ready to elevate your online presence with a premium website?
           </p>
-          <button className="px-12 py-4 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 shadow-xl hover:scale-105 transition font-semibold">
-            Contact Us
-          </button>
+
+          <a
+            href="/contact"
+            className="inline-flex mt-10 items-center gap-3 px-10 py-4 rounded-full bg-[#C6A75E] text-black font-semibold hover:scale-105 transition"
+          >
+            Start Your Project <ArrowUpRight />
+          </a>
         </div>
-      </div>
-      {/*  */}
-    </section>
+      </section>
+    </main>
   );
 }

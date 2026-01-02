@@ -35,14 +35,14 @@ const services = [
 export default function Services() {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
-  const bgRef = useRef(null);
+  const glowRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section glow slow drift
-      gsap.to(bgRef.current, {
-        y: -60,
-        duration: 14,
+      // Subtle ambient glow movement
+      gsap.to(glowRef.current, {
+        y: -40,
+        duration: 16,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -50,14 +50,14 @@ export default function Services() {
 
       // Cards reveal
       gsap.from(cardsRef.current, {
-        y: 60,
-        // opacity: 0,
-        stagger: 0.18,
-        duration: 1,
-        ease: "power4.out",
+        y: 50,
+        //  
+        stagger: 0.16,
+        duration: 0.9,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 65%",
+          start: "top 70%",
         },
       });
     }, sectionRef);
@@ -70,36 +70,35 @@ export default function Services() {
       ref={sectionRef}
       className="relative py-36 bg-[#0B0B0B] text-white overflow-hidden"
     >
-      {/* MOVING BACKGROUND GLOW */}
+      {/* SOFT GOLD AMBIENT GLOW */}
       <div
-        ref={bgRef}
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#08f0a5]/15 rounded-full blur-[200px]"
+        ref={glowRef}
+        className="absolute -top-48 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#C6A75E]/15 rounded-full blur-[220px]"
       />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#C6A75E]/10 rounded-full blur-[200px]" />
 
-      {/* FLOATING SPARK ICON */}
-      <Sparkles className="absolute top-24 left-24 w-14 h-14 text-[#08f0a5]/25" />
+      {/* DECORATIVE ICON */}
+      <Sparkles className="absolute top-24 left-24 w-12 h-12 text-[#C6A75E]/20" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div className="max-w-4xl mb-24">
-          <p className="text-xs uppercase tracking-[0.4em] text-[#08f0a5] font-semibold">
-            What We Do
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
+            Services
           </p>
 
           <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-            Crafting digital systems
+            What we do to help
             <br />
-            that <span className="text-[#C6A75E]">elevate brands</span>
+            <span className="text-[#C6A75E]">brands grow digitally</span>
           </h2>
 
           <p className="mt-8 text-lg text-gray-400 max-w-2xl">
-            We don’t deliver features. We design experiences, build platforms,
-            and create strategies that move brands forward.
+            We combine strategy, design, and technology to build digital systems
+            that feel premium, perform reliably, and scale effortlessly.
           </p>
         </div>
 
-        {/* SERVICES – CREATIVE GRID */}
+        {/* SERVICES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
           {services.map((service, i) => {
             const Icon = service.icon;
@@ -107,15 +106,10 @@ export default function Services() {
               <div
                 key={i}
                 ref={(el) => (cardsRef.current[i] = el)}
-                className="group relative p-10 rounded-3xl bg-gradient-to-br from-white/10 to-white/0 border border-white/10 backdrop-blur-xl hover:border-[#08f0a5]/50 transition-all duration-500"
+                className="group relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-[#C6A75E]/40 transition-all duration-500"
               >
-                {/* BIG ICON */}
-                <div className="absolute top-6 right-6 text-[#08f0a5]/20 group-hover:text-[#08f0a5]/40 transition">
-                  <Icon size={56} />
-                </div>
-
-                {/* SMALL ICON */}
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-[#08f0a5]/15 text-[#08f0a5] mb-8">
+                {/* ICON */}
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-[#C6A75E]/15 text-[#C6A75E] mb-8">
                   <Icon size={26} />
                 </div>
 
