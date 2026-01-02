@@ -1,149 +1,128 @@
-import { useEffect, useState, useRef } from "react";
-import { Sparkles, Target, Heart, Code2, Layers } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { Sparkles, Target, Layers, Code2 } from "lucide-react";
 import { gsap } from "gsap";
 
-const images = ["/img/abt5.png", "/img/abt2.png", "/img/abt6.png"];
-
 export default function AboutUs() {
-  const [index, setIndex] = useState(0);
-  const floatRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const itemRefs = useRef([]);
 
-  // Image slider
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Floating icon animation
-  useEffect(() => {
-    floatRefs.current.forEach((el, i) => {
-      if (!el) return;
-
-      gsap.to(el, {
-        y: i % 2 === 0 ? -50 : 50,
-        x: i % 3 === 0 ? 40 : -40,
-        rotation: i % 2 === 0 ? 6 : -6,
-        duration: 8 + i,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
+    const ctx = gsap.context(() => {
+      gsap.from(itemRefs.current, {
+        y: 40,
+        // opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
       });
-    });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <>
       {/* ABOUT SECTION */}
-      <section className="relative py-28 bg-gradient-to-b from-white to-indigo-50 overflow-hidden font-body">
-        {/* FLOATING BACKGROUND ICONS */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <Sparkles
-            ref={(el) => (floatRefs.current[0] = el)}
-            className="absolute top-24 left-20 w-16 h-16 text-indigo-500 opacity-20"
-          />
+      <section
+        ref={sectionRef}
+        className="relative py-32 bg-[#0B0B0B] text-white overflow-hidden"
+      >
+        {/* Soft luxury glows */}
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#08f0a5]/25 rounded-full blur-[180px]" />
+        <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-[#C6A75E]/15 rounded-full blur-[180px]" />
 
-          <Code2
-            ref={(el) => (floatRefs.current[1] = el)}
-            className="absolute top-1/3 right-24 w-20 h-20 text-indigo-600 opacity-25"
-          />
-
-          <Layers
-            ref={(el) => (floatRefs.current[2] = el)}
-            className="absolute bottom-32 left-32 w-16 h-16 text-indigo-500 opacity-20"
-          />
-
-          <Target
-            ref={(el) => (floatRefs.current[3] = el)}
-            className="absolute bottom-24 right-40 w-14 h-14 text-indigo-400 opacity-20"
-          />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center z-10">
-          {/* IMAGE SLIDER */}
-          <div className="relative flex justify-center">
-            <div className="relative w-[300px] sm:w-[380px] md:w-[440px]">
-              <img
-                src={images[index]}
-                alt="About illustration"
-                className="w-full h-auto transition-all duration-700 ease-in-out drop-shadow-2xl"
-              />
-              <div className="absolute -inset-6 bg-indigo-400/30 blur-3xl rounded-full -z-10" />
-            </div>
-          </div>
-
-          {/* CONTENT */}
+        <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT – STORY */}
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-indigo-600 font-heading font-semibold">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#08f0a5] font-semibold">
               About Us
             </p>
 
-            <h2 className="mt-6 text-4xl sm:text-5xl font-heading font-extrabold text-gray-900 leading-tight">
-              We build modern digital
-              <br /> experiences that convert.
+            <h2 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight">
+              We craft digital experiences
+              <br />
+              that <span className="text-[#08f0a5]">feel premium</span> and
+              perform.
             </h2>
 
-            <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-xl">
-              We help brands grow through clean design, powerful technology, and
-              thoughtful user experiences.
+            <p className="mt-8 text-lg text-gray-400 max-w-xl leading-relaxed">
+              Creativespark is a digital studio focused on building brands that
+              stand out. We combine strategy, design, and modern technology to
+              create websites that don’t just look good — they convert, scale,
+              and last.
             </p>
 
-            {/* FEATURES */}
-            <div className="mt-12 space-y-6">
-              <Feature
-                icon={<Sparkles />}
-                title="Creative Design"
-                text="Minimal, modern and conversion-focused UI."
-              />
-              <Feature
-                icon={<Target />}
-                title="Clear Strategy"
-                text="Every decision supports business goals."
-              />
-              <Feature
-                icon={<Heart />}
-                title="Built with Care"
-                text="Attention to detail in every project."
-              />
-            </div>
+            <p className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed">
+              Every project starts with clarity and ends with measurable impact.
+              No shortcuts. No templates. Just thoughtful execution.
+            </p>
+          </div>
 
-            {/* CTA */}
-            <button className="mt-12 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-indigo-600 text-white font-heading font-semibold hover:bg-indigo-700 transition shadow-lg">
-              Learn More
-            </button>
+          {/* RIGHT – VALUE BLOCKS */}
+          <div className="grid gap-10">
+            <ValueCard
+              refEl={(el) => (itemRefs.current[0] = el)}
+              icon={<Sparkles size={26} />}
+              title="Design with intention"
+              text="Minimal, timeless interfaces crafted to build trust and guide users toward action."
+            />
+
+            <ValueCard
+              refEl={(el) => (itemRefs.current[1] = el)}
+              icon={<Target size={26} />}
+              title="Strategy-led thinking"
+              text="Every design decision is aligned with business goals, not trends."
+            />
+
+            <ValueCard
+              refEl={(el) => (itemRefs.current[2] = el)}
+              icon={<Code2 size={26} />}
+              title="Modern development"
+              text="Fast, scalable, and future-ready builds using modern web technologies."
+            />
+
+            <ValueCard
+              refEl={(el) => (itemRefs.current[3] = el)}
+              icon={<Layers size={26} />}
+              title="Built to scale"
+              text="Systems, layouts, and code that grow seamlessly with your brand."
+            />
           </div>
         </div>
       </section>
 
-      {/* CASE STUDY STRIP */}
-      <section className="bg-white py-24 border-t border-gray-100 font-body">
+      {/* IMPACT STRIP */}
+      <section className="bg-black py-28 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.35em] text-indigo-600 mb-10 font-heading font-semibold">
-            Selected Work
+          <p className="text-xs uppercase tracking-[0.35em] text-[#08f0a5] mb-12 font-semibold">
+            Selected Impact
           </p>
 
-          <div className="grid md:grid-cols-3 gap-14">
+          <div className="grid md:grid-cols-3 gap-16">
             {[
               {
                 title: "Luxury Restaurant Brand",
-                result: "+68% Online Orders",
+                result: "68% increase in online orders",
               },
               {
-                title: "Startup SaaS Platform",
-                result: "3× Conversion Rate",
+                title: "SaaS Startup Platform",
+                result: "3× higher conversion rate",
               },
               {
-                title: "E-commerce Fashion Brand",
-                result: "+42% Revenue Growth",
+                title: "E-commerce Brand",
+                result: "42% revenue growth in 90 days",
               },
             ].map((item, i) => (
-              <div key={i} className="group hover:-translate-y-1 transition">
-                <div className="h-[2px] w-10 bg-indigo-600 mb-4 group-hover:w-16 transition-all" />
-                <h3 className="text-lg font-heading font-semibold text-gray-900">
+              <div key={i}>
+                <div className="h-[2px] w-12 bg-[#08f0a5] mb-6" />
+                <h3 className="text-xl font-semibold text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-gray-600">{item.result}</p>
+                <p className="mt-3 text-gray-400">{item.result}</p>
               </div>
             ))}
           </div>
@@ -153,15 +132,16 @@ export default function AboutUs() {
   );
 }
 
-/* FEATURE ITEM */
-const Feature = ({ icon, title, text }) => (
-  <div className="flex items-start gap-4">
-    <div className="p-3 rounded-xl bg-indigo-100 text-indigo-600">{icon}</div>
+/* VALUE CARD */
+const ValueCard = ({ icon, title, text, refEl }) => (
+  <div
+    ref={refEl}
+    className="flex items-start gap-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-[#08f0a5]/40 transition"
+  >
+    <div className="p-3 rounded-xl bg-[#08f0a5]/20 text-[#08f0a5]">{icon}</div>
     <div>
-      <h4 className="text-lg font-heading font-semibold text-gray-900">
-        {title}
-      </h4>
-      <p className="text-gray-600 mt-1">{text}</p>
+      <h4 className="text-lg font-semibold text-white">{title}</h4>
+      <p className="mt-2 text-gray-400 leading-relaxed">{text}</p>
     </div>
   </div>
 );

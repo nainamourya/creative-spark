@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -9,176 +9,182 @@ export default function Hero() {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
-  const btnsRef = useRef(null);
-
-  const iconRef = useRef(null);
-  const threeDRef = useRef(null);
   const typeRef = useRef(null);
+  const btnsRef = useRef(null);
+  const iconRef = useRef(null);
+  const sliderRef = useRef(null);
 
+  const slides = [
+    {
+      title: "Design",
+      desc: "Clean, modern UI built for conversion",
+      img: "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Development",
+      desc: "Fast, scalable, performance-driven websites",
+      img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Growth",
+      desc: "SEO & digital strategies that scale brands",
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    },
+  ];
+
+  const typeWords = [
+    "Web Design",
+    "Advanced SEO",
+    "Brand Identity",
+    "Digital Growth",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  // Entrance animations + typewriter
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      tl.from(titleRef.current, {
-        y: 80,
-        opacity: 0,
-        duration: 1,
-      })
-        .from(
-          subtitleRef.current,
-          {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-          },
-          "-=0.5"
-        )
-        .from(
-          btnsRef.current.children,
-          {
-            y: 30,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.6,
-          },
-          "-=0.4"
-        );
+      gsap.from(titleRef.current, { y: 80, duration: 1, ease: "power4.out" });
+      gsap.from(subtitleRef.current, {
+        y: 40,
+        duration: 0.8,
+        delay: 0.4,
+      });
+      gsap.from(btnsRef.current.children, {
+        y: 30,
+        stagger: 0.15,
+        duration: 0.6,
+        delay: 0.6,
+      });
 
       gsap.to(iconRef.current, {
-        y: -15,
+        y: -12,
         repeat: -1,
         yoyo: true,
         duration: 2,
         ease: "sine.inOut",
       });
 
-      gsap.to(threeDRef.current, {
-        rotateY: 360,
-        rotateX: 15,
-        duration: 12,
-        repeat: -1,
-        ease: "none",
-        transformOrigin: "center",
-      });
-
-      // ✅ GSAP Typewriter effect (moved here)
-      const words = ["Web Design", "Advanced SEO", "Social Handler"];
-      const typeTl = gsap.timeline({ repeat: -1, repeatDelay: 0.8 });
-
-      words.forEach((word) => {
-        typeTl
-          .to(typeRef.current, {
-            text: word,
-            duration: 1.5,
-            ease: "none",
-          })
+      // Typewriter
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.8 });
+      typeWords.forEach((word) => {
+        tl.to(typeRef.current, {
+          text: word,
+          duration: 1.2,
+          ease: "none",
+        })
           .to({}, { duration: 1 })
           .to(typeRef.current, {
             text: "",
-            duration: 0.8,
+            duration: 0.6,
             ease: "none",
           });
       });
     }, containerRef);
 
-    const handleMove = (e) => {
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 30;
-      const y = (e.clientY / innerHeight - 0.5) * -30;
-
-      gsap.to(threeDRef.current, {
-        rotateY: x,
-        rotateX: y,
-        duration: 0.6,
-        ease: "power3.out",
-      });
-    };
-
-    window.addEventListener("mousemove", handleMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMove);
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
+
+  // 🔁 Image + content fade slider
+  useEffect(() => {
+    gsap.fromTo(
+      sliderRef.current,
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }
+    );
+
+    const interval = setInterval(() => {
+      gsap.to(sliderRef.current, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.5,
+        onComplete: () => {
+          setIndex((prev) => (prev + 1) % slides.length);
+          gsap.to(sliderRef.current, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+          });
+        },
+      });
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [index]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0b0f19] text-white"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#0B0B0B] text-white"
     >
-      {/* Glow Background */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-indigo-600/30 rounded-full blur-[120px]" />
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[120px]" />
+      {/* Glow background */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#C6A75E]/20 rounded-full blur-[160px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0F3D2E]/30 rounded-full blur-[160px]" />
+      </div>
 
-      {/* SVG ICON */}
+      {/* Floating icon */}
       <div
         ref={iconRef}
-        className="absolute top-24 left-1/2 -translate-x-1/2 opacity-70"
+        className="absolute top-28 left-1/2 -translate-x-1/2 text-[#C6A75E]/70"
       >
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 24 24"
-          fill="none"
-          className="text-indigo-400"
-        >
-          <path
-            d="M12 2L2 7l10 5 10-5-10-5zm0 20v-9"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Sparkles size={42} />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl px-6">
-        <h1
-          ref={titleRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight"
-        >
-          Crafting{" "}
-          <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-            Modern
-          </span>{" "}
-          Web Experiences
-        </h1>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        {/* LEFT */}
+        <div>
+          <h1
+            ref={titleRef}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+          >
+            Turning Ideas Into <span className="text-[#C6A75E]">Premium</span>
+            <br /> Digital Experiences
+          </h1>
 
-        {/* ✅ Typewriter line */}
-        <p className="mt-4 text-xl md:text-2xl font-semibold text-indigo-400">
-          <span ref={typeRef}></span>
-          <span className="animate-pulse">|</span>
-        </p>
+          <p className="mt-4 text-lg md:text-xl font-semibold text-[#C6A75E]">
+            <span ref={typeRef}></span>
+            <span className="animate-pulse">|</span>
+          </p>
 
-        <p
-          ref={subtitleRef}
-          className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
-        >
-          Build fast, interactive, and beautiful interfaces with React, Tailwind
-          CSS, and GSAP animations.
-        </p>
+          <p
+            ref={subtitleRef}
+            className="mt-6 text-lg md:text-xl text-gray-400 max-w-xl"
+          >
+            We help brands grow with strategy-first design, modern development,
+            and digital solutions built to perform.
+          </p>
 
+          <div ref={btnsRef} className="mt-10 flex gap-4">
+            <button className="px-8 py-3 rounded-full bg-[#C6A75E] text-black font-semibold flex items-center gap-2 hover:bg-[#d8ba6a] transition shadow-lg">
+              Get Started <ArrowRight size={18} />
+            </button>
+            <button className="px-8 py-3 rounded-full border border-white/20 hover:border-[#C6A75E] hover:text-[#C6A75E] transition font-semibold">
+              View Work
+            </button>
+          </div>
+        </div>
+
+        {/* RIGHT – IMAGE + CONTENT SLIDER */}
         <div
-          ref={btnsRef}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          ref={sliderRef}
+          className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl"
         >
-          <button className="px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 transition font-semibold flex items-center gap-2">
-            Get Started <ArrowRight size={18} />
-          </button>
-          <button className="px-8 py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">
-            View Work
-          </button>
+          <img
+            src={slides[index].img}
+            alt={slides[index].title}
+            className="w-full h-56 object-cover"
+          />
+
+          <div className="p-8">
+            <h3 className="text-3xl font-bold text-[#C6A75E]">
+              {slides[index].title}
+            </h3>
+            <p className="mt-3 text-gray-300 text-lg">{slides[index].desc}</p>
+            <div className="mt-6 h-[2px] w-20 bg-[#C6A75E]" />
+          </div>
         </div>
       </div>
-
-      {/* 3D ELEMENT */}
-      <div
-        ref={threeDRef}
-        className="absolute bottom-16 right-16 w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-2xl"
-        style={{ transformStyle: "preserve-3d" }}
-      />
     </section>
   );
 }

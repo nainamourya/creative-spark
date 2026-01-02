@@ -1,142 +1,138 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
   {
     title: "Modern Website Design That Converts Visitors into Customers",
-    desc: "Learn how modern UI/UX design, responsive layouts, and conversion-focused website design help businesses increase leads and sales.",
+    desc: "How clean UI, UX psychology, and performance-driven layouts increase leads and sales.",
     img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
     tag: "Web Design",
     slug: "modern-website-design-conversion",
   },
   {
-    title: "SEO & Website Performance Strategies for Higher Google Rankings",
-    desc: "Discover practical SEO strategies, Core Web Vitals optimization, and website performance techniques to rank higher on Google in 2025.",
+    title: "SEO & Website Performance Strategies for Higher Rankings",
+    desc: "Core Web Vitals, technical SEO, and performance optimization explained simply.",
     img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200",
-    tag: "SEO Optimization",
+    tag: "SEO",
     slug: "seo-and-performance-strategies-2025",
   },
   {
-    title: "Digital Marketing Strategies to Build Strong Online Brands",
-    desc: "Explore proven digital marketing strategies including content marketing, social media growth, and brand positioning for long-term success.",
+    title: "Digital Marketing Systems That Build Strong Brands",
+    desc: "Brand positioning, content strategy, and growth systems for long-term success.",
     img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200",
-    tag: "Digital Marketing",
+    tag: "Marketing",
     slug: "digital-marketing-brand-growth",
   },
 ];
 
+// duplicate for infinite loop
+const slides = [...blogs, ...blogs];
+
 export default function BlogSection() {
-  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".blog-card");
+      const track = trackRef.current;
+      const cards = track.children;
+      const cardWidth = cards[0].offsetWidth + 32; // gap included
 
-      gsap.fromTo(
-        cards,
-        { y: 80, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-            once: true,
+      gsap.set(track, { x: 0 });
+
+      gsap.to(track, {
+        x: `-=${cardWidth * blogs.length}`,
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: (x) => {
+            const value = parseFloat(x);
+            return `${value % (cardWidth * blogs.length)}px`;
           },
-        }
-      );
-    }, sectionRef);
+        },
+      });
+    });
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-indigo-50 via-white to-indigo-100 overflow-hidden"
-    >
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-indigo-100 text-indigo-600 text-sm font-medium mb-4">
-            <Sparkles size={16} /> Blog & Insights
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Web Design, SEO & Digital Marketing Insights
+    <section className="py-36 bg-[#0B0B0B] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-20">
+        {/* HEADER */}
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
+            Insights
+          </p>
+
+          <h2 className="mt-6 text-4xl md:text-6xl font-extrabold text-white leading-tight">
+            Ideas, strategies & insights
+            <br />
+            <span className="text-[#C6A75E]">from our studio</span>
           </h2>
-          <p className="mt-4 text-gray-600">
-            Read expert insights on modern website design, SEO optimization,
-            React development, and digital marketing strategies that help
-            businesses grow online.
+
+          <p className="mt-6 text-lg text-gray-400 max-w-2xl">
+            Learn how modern design, SEO, and digital systems help brands grow,
+            scale, and stand out in competitive markets.
           </p>
         </div>
+      </div>
 
-        {/* Blog Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog, i) => (
-            <article
-              key={i}
-              className="blog-card group flex flex-col h-full rounded-3xl overflow-hidden bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg hover:shadow-2xl transition-all"
-            >
-              <Link
-                to={`/blog/${blog.slug}`}
-                className="flex flex-col h-full"
-                aria-label={blog.title}
+      {/* SLIDER */}
+      <div className="relative">
+        <div className="overflow-hidden">
+          <div ref={trackRef} className="flex gap-8 will-change-transform px-6">
+            {slides.map((blog, i) => (
+              <article
+                key={i}
+                className="min-w-[320px] md:min-w-[420px] xl:min-w-[480px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden group hover:border-[#C6A75E]/40 transition"
               >
-                {/* Image */}
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={blog.img}
-                    alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 text-xs font-semibold text-indigo-600">
-                    {blog.tag}
-                  </span>
-                </div>
+                <Link to={`/blog/${blog.slug}`} className="block h-full">
+                  {/* IMAGE */}
+                  <div className="relative h-60 overflow-hidden">
+                    <img
+                      src={blog.img}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition line-clamp-2">
-                    {blog.title}
-                  </h3>
-
-                  <p className="mt-3 text-gray-600 text-sm line-clamp-3">
-                    {blog.desc}
-                  </p>
-
-                  {/* CTA pinned to bottom */}
-                  <div className="mt-auto pt-6 flex items-center justify-between">
-                    <span className="text-sm font-medium text-indigo-600">
-                      Read Full Article
+                    <span className="absolute top-5 left-5 px-4 py-1 rounded-full bg-black/70 backdrop-blur text-xs tracking-wide text-[#C6A75E]">
+                      {blog.tag}
                     </span>
-                    <ArrowUpRight className="w-5 h-5 text-indigo-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </div>
-                </div>
-              </Link>
-            </article>
-          ))}
-        </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-600 text-white font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition"
-          >
-            Explore All Blog Articles <ArrowUpRight size={18} />
-          </Link>
+                  {/* CONTENT */}
+                  <div className="p-8">
+                    <h3 className="text-2xl font-semibold text-white leading-snug group-hover:text-[#C6A75E] transition">
+                      {blog.title}
+                    </h3>
+
+                    <p className="mt-4 text-gray-400 leading-relaxed">
+                      {blog.desc}
+                    </p>
+
+                    <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-[#C6A75E]">
+                      Read Article <ArrowUpRight size={16} />
+                    </div>
+                  </div>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* CTA */}
+      <div className="mt-24 text-center">
+        <Link
+          to="/blog"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#C6A75E] text-black font-semibold text-lg shadow-xl hover:scale-105 transition"
+        >
+          Explore All Articles <ArrowUpRight size={18} />
+        </Link>
       </div>
     </section>
   );
