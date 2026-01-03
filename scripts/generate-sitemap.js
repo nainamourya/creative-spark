@@ -1,7 +1,7 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import fs from "fs";
 
-const hostname = "https://www.nainainfotech.com";
+const hostname = "https://www.creativespark.in";
 
 const links = [
   { url: "/", priority: 1.0 },
