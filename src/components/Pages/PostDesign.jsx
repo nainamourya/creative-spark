@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { Layers, Image, TrendingUp, Share2, ArrowUpRight } from "lucide-react";
 
@@ -22,6 +23,19 @@ export default function PostDesign() {
 
   return (
     <main ref={sectionRef} className="bg-[#0B0B0B] text-white">
+      {/* ✅ SEO META */}
+      <Helmet>
+        <title>Content & Social Media Design Services | Creative Spark</title>
+        <meta
+          name="description"
+          content="Professional content and social media post design services to build authority, engagement, and brand consistency."
+        />
+        <link
+          rel="canonical"
+          href="https://creativespark.in/services/post-design"
+        />
+      </Helmet>
+
       {/* ================= HERO ================= */}
       <section className="relative py-36 px-6 text-center overflow-hidden">
         {/* Gold ambient glow */}
@@ -32,18 +46,21 @@ export default function PostDesign() {
           className="relative max-w-5xl mx-auto"
         >
           <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
-            Content & Post Design
+            Content & Social Media Design
           </p>
 
           <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-            Content designed to
+            Content design that
             <br />
-            <span className="text-[#C6A75E]">build authority</span>
+            <span className="text-[#C6A75E]">
+              builds authority & engagement
+            </span>
           </h1>
 
           <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-            We design high-quality social and digital content that aligns with
-            your brand, communicates value, and drives consistent engagement.
+            We provide content and social media post design services that align
+            with your brand, communicate value clearly, and drive consistent
+            audience engagement.
           </p>
 
           <a
@@ -62,18 +79,18 @@ export default function PostDesign() {
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
               Social content is not noise.
               <br />
-              <span className="text-[#C6A75E]">It’s positioning.</span>
+              <span className="text-[#C6A75E]">It’s brand positioning.</span>
             </h2>
 
             <p className="mt-8 text-lg text-gray-400 leading-relaxed max-w-xl">
-              Every post you publish shapes how your brand is perceived. We
-              design content that communicates clarity, consistency, and
-              confidence.
+              Every piece of content you publish shapes how your brand is
+              perceived online. We design social media content that delivers
+              clarity, consistency, and confidence.
             </p>
 
             <p className="mt-6 text-lg text-gray-400 leading-relaxed max-w-xl">
-              No random visuals. No trend-chasing. Just purposeful design that
-              aligns with your business goals.
+              No random visuals. No trend-chasing. Just strategic content design
+              aligned with your business goals.
             </p>
           </div>
 
@@ -84,7 +101,7 @@ export default function PostDesign() {
             <Layers className="w-16 h-16 text-[#C6A75E] mb-6" />
             <p className="text-lg text-gray-300 leading-relaxed">
               We treat content as a system — visual consistency, messaging
-              clarity, and brand recall across every platform.
+              clarity, and brand recall across every digital platform.
             </p>
           </div>
         </div>
@@ -96,18 +113,18 @@ export default function PostDesign() {
           {[
             {
               icon: <Image />,
-              title: "Social Media Posts",
-              desc: "Clean, on-brand visuals for consistent posting.",
+              title: "Social Media Post Design",
+              desc: "On-brand social media creatives for consistent posting.",
             },
             {
               icon: <Share2 />,
-              title: "Campaign Creatives",
-              desc: "Launch, offer, and announcement designs.",
+              title: "Campaign & Ad Creatives",
+              desc: "Promotional, launch, and announcement designs.",
             },
             {
               icon: <TrendingUp />,
-              title: "Growth Content",
-              desc: "Content built to attract, educate, and convert.",
+              title: "Growth-Focused Content",
+              desc: "Content designed to attract, educate, and convert audiences.",
             },
           ].map((item, i) => (
             <div
@@ -135,15 +152,31 @@ export default function PostDesign() {
             ref={(el) => (revealRefs.current[6] = el)}
             className="text-4xl md:text-5xl font-extrabold mb-20"
           >
-            Our content workflow
+            Our content design workflow
           </h2>
 
           <div className="grid md:grid-cols-4 gap-12">
             {[
-              { step: "01", title: "Research", desc: "Audience & brand tone" },
-              { step: "02", title: "Structure", desc: "Layouts & hierarchy" },
-              { step: "03", title: "Design", desc: "Visual consistency" },
-              { step: "04", title: "Deliver", desc: "Platform-ready assets" },
+              {
+                step: "01",
+                title: "Research",
+                desc: "Audience insights & brand tone",
+              },
+              {
+                step: "02",
+                title: "Structure",
+                desc: "Layouts, formats & hierarchy",
+              },
+              {
+                step: "03",
+                title: "Design",
+                desc: "Visual consistency & clarity",
+              },
+              {
+                step: "04",
+                title: "Deliver",
+                desc: "Platform-ready content assets",
+              },
             ].map((item, i) => (
               <div
                 key={i}
@@ -174,7 +207,8 @@ export default function PostDesign() {
           </h2>
 
           <p className="mt-8 text-lg text-gray-400">
-            Strategic visuals. Clear messaging. Consistent brand presence.
+            Strategic visuals, clear messaging, and consistent brand presence
+            across platforms.
           </p>
 
           <a

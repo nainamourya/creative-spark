@@ -13,22 +13,22 @@ const services = [
   {
     icon: Code2,
     title: "Web Design & Development",
-    desc: "High-performance websites engineered for speed, clarity, and conversion — built to scale with your business.",
+    desc: "High-performance website design and development focused on speed, clarity, SEO readiness, and conversion — built to scale with your business.",
   },
   {
     icon: Search,
-    title: "SEO & Performance",
-    desc: "Search-first optimization focused on visibility, Core Web Vitals, and long-term organic growth.",
+    title: "SEO & Performance Optimization",
+    desc: "Search engine optimization focused on visibility, Core Web Vitals, technical SEO, and long-term organic growth.",
   },
   {
     icon: Palette,
-    title: "Brand Identity",
-    desc: "Distinctive brand systems designed to feel premium, consistent, and instantly recognizable.",
+    title: "Brand Identity & Visual Design",
+    desc: "Distinctive brand identity systems designed to feel premium, consistent, and instantly recognizable across digital platforms.",
   },
   {
     icon: Megaphone,
-    title: "Digital Marketing",
-    desc: "Strategic content and campaigns crafted to build authority and meaningful engagement.",
+    title: "Digital Marketing & Growth",
+    desc: "Strategic digital marketing, content, and campaigns crafted to build authority, traffic, and meaningful engagement.",
   },
 ];
 
@@ -51,7 +51,6 @@ export default function Services() {
       // Cards reveal
       gsap.from(cardsRef.current, {
         y: 50,
-        //  
         stagger: 0.16,
         duration: 0.9,
         ease: "power3.out",
@@ -83,18 +82,19 @@ export default function Services() {
         {/* HEADER */}
         <div className="max-w-4xl mb-24">
           <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
-            Services
+            Our Services
           </p>
 
           <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-            What we do to help
+            Digital services that help
             <br />
-            <span className="text-[#C6A75E]">brands grow digitally</span>
+            <span className="text-[#C6A75E]">businesses grow online</span>
           </h2>
 
           <p className="mt-8 text-lg text-gray-400 max-w-2xl">
-            We combine strategy, design, and technology to build digital systems
-            that feel premium, perform reliably, and scale effortlessly.
+            We provide web design, SEO, branding, and digital marketing services
+            that combine strategy, performance, and premium execution to help
+            businesses scale confidently.
           </p>
         </div>
 

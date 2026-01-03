@@ -38,26 +38,27 @@ export default function AboutUs() {
           {/* LEFT – STORY */}
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-[#C6A75E] font-semibold">
-              About Us
+              About Creative Spark
             </p>
 
             <h2 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight">
-              We craft digital experiences
+              We craft web design & SEO experiences
               <br />
               that <span className="text-[#C6A75E]">feel premium</span> and
               perform.
             </h2>
 
             <p className="mt-8 text-lg text-gray-400 max-w-xl leading-relaxed">
-              Creativespark is a digital studio focused on building brands that
-              stand out. We combine strategy, design, and modern technology to
-              create websites that don’t just look good — they convert, scale,
-              and last.
+              Creative Spark is a web design and SEO agency focused on building
+              brands that stand out online. We combine strategy, design, and
+              modern technology to create websites that don’t just look good —
+              they convert, scale, and last.
             </p>
 
             <p className="mt-6 text-lg text-gray-400 max-w-xl leading-relaxed">
-              Every project starts with clarity and ends with measurable impact.
-              No shortcuts. No templates. Just thoughtful execution.
+              Every project starts with clarity and ends with measurable
+              business impact. No shortcuts. No templates. Just thoughtful
+              execution.
             </p>
           </div>
 
@@ -66,29 +67,29 @@ export default function AboutUs() {
             <ValueCard
               refEl={(el) => (itemRefs.current[0] = el)}
               icon={<Sparkles size={26} />}
-              title="Design with intention"
-              text="Minimal, timeless interfaces crafted to build trust and guide users toward action."
+              title="Conversion-focused web design"
+              text="Minimal, timeless interfaces designed to build trust, guide users, and increase conversions."
             />
 
             <ValueCard
               refEl={(el) => (itemRefs.current[1] = el)}
               icon={<Target size={26} />}
-              title="Strategy-led thinking"
-              text="Every design decision is aligned with business goals, not trends."
+              title="SEO & strategy-led thinking"
+              text="Every design and content decision is aligned with SEO, search intent, and business goals."
             />
 
             <ValueCard
               refEl={(el) => (itemRefs.current[2] = el)}
               icon={<Code2 size={26} />}
-              title="Modern development"
-              text="Fast, scalable, and future-ready builds using modern web technologies."
+              title="Modern web development"
+              text="Fast, scalable, and future-ready websites built using modern web technologies."
             />
 
             <ValueCard
               refEl={(el) => (itemRefs.current[3] = el)}
               icon={<Layers size={26} />}
               title="Built to scale"
-              text="Systems, layouts, and code that grow seamlessly with your brand."
+              text="Systems, layouts, and codebases that grow seamlessly with your business."
             />
           </div>
         </div>
@@ -98,21 +99,21 @@ export default function AboutUs() {
       <section className="bg-black py-28 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-xs uppercase tracking-[0.35em] text-[#C6A75E] mb-12 font-semibold">
-            Selected Impact
+            Results & Impact
           </p>
 
           <div className="grid md:grid-cols-3 gap-16">
             {[
               {
-                title: "Luxury Restaurant Brand",
+                title: "Restaurant Website & Local SEO",
                 result: "68% increase in online orders",
               },
               {
-                title: "SaaS Startup Platform",
+                title: "SaaS Website Optimization",
                 result: "3× higher conversion rate",
               },
               {
-                title: "E-commerce Brand",
+                title: "E-commerce SEO & UX",
                 result: "42% revenue growth in 90 days",
               },
             ].map((item, i) => (

@@ -52,16 +52,16 @@ export default function CTASection() {
 
           {/* HEADLINE */}
           <h2 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
-            Let’s build something
+            Ready to grow your business
             <br />
-            <span className="text-[#C6A75E]">remarkable together</span>
+            <span className="text-[#C6A75E]">with web design & SEO?</span>
           </h2>
 
           {/* SUBTEXT */}
           <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Whether you’re launching a new brand or scaling an existing one, we
-            design and develop digital experiences that feel premium, perform
-            flawlessly, and grow with your business.
+            help businesses grow with premium web design, SEO services, and
+            performance-driven digital solutions built to convert and scale.
           </p>
 
           {/* CTA BUTTONS */}
@@ -78,13 +78,13 @@ export default function CTASection() {
               href="/services/website-design"
               className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-white/20 text-white font-semibold text-lg hover:border-[#C6A75E] hover:text-[#C6A75E] transition"
             >
-              View Services
+              View Our Services
             </a>
           </div>
 
           {/* TRUST LINE */}
           <p className="mt-12 text-sm text-gray-500 tracking-wide">
-            Trusted by startups, creators, and growing brands worldwide
+            Trusted by startups, creators, and growing businesses worldwide
           </p>
         </div>
       </div>

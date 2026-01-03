@@ -6,23 +6,23 @@ import { Link } from "react-router-dom";
 const blogs = [
   {
     title: "Modern Website Design That Converts Visitors into Customers",
-    desc: "How clean UI, UX psychology, and performance-driven layouts increase leads and sales.",
+    desc: "How conversion-focused web design, UX psychology, and performance optimization turn visitors into leads and customers.",
     img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
     tag: "Web Design",
     slug: "modern-website-design-conversion",
   },
   {
-    title: "SEO & Website Performance Strategies for Higher Rankings",
-    desc: "Core Web Vitals, technical SEO, and performance optimization explained simply.",
+    title: "SEO & Website Performance Strategies for Higher Google Rankings",
+    desc: "A practical guide to Core Web Vitals, technical SEO, and website performance optimization.",
     img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200",
     tag: "SEO",
     slug: "seo-and-performance-strategies-2025",
   },
   {
     title: "Digital Marketing Systems That Build Strong Brands",
-    desc: "Brand positioning, content strategy, and growth systems for long-term success.",
+    desc: "How content strategy, brand positioning, and digital marketing systems drive long-term growth.",
     img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200",
-    tag: "Marketing",
+    tag: "Digital Marketing",
     slug: "digital-marketing-brand-growth",
   },
 ];
@@ -37,7 +37,7 @@ export default function BlogSection() {
     const ctx = gsap.context(() => {
       const track = trackRef.current;
       const cards = track.children;
-      const cardWidth = cards[0].offsetWidth + 32; // gap included
+      const cardWidth = cards[0].offsetWidth + 32;
 
       gsap.set(track, { x: 0 });
 
@@ -64,18 +64,19 @@ export default function BlogSection() {
         {/* HEADER */}
         <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
-            Insights
+            Insights & Resources
           </p>
 
           <h2 className="mt-6 text-4xl md:text-6xl font-extrabold text-white leading-tight">
-            Ideas, strategies & insights
+            SEO, web design & digital growth
             <br />
-            <span className="text-[#C6A75E]">from our studio</span>
+            <span className="text-[#C6A75E]">insights from our studio</span>
           </h2>
 
           <p className="mt-6 text-lg text-gray-400 max-w-2xl">
-            Learn how modern design, SEO, and digital systems help brands grow,
-            scale, and stand out in competitive markets.
+            Explore expert insights on web design, SEO, digital marketing, and
+            performance optimization to help businesses grow, scale, and compete
+            online.
           </p>
         </div>
       </div>
@@ -96,6 +97,7 @@ export default function BlogSection() {
                       src={blog.img}
                       alt={blog.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 

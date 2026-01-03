@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
@@ -26,11 +27,10 @@ export default function AdvancedSEO() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* ================= TYPEWRITER (SMOOTH & PREMIUM) ================= */
       const words = [
-        "Search visibility",
-        "Qualified traffic",
-        "Long-term growth",
+        "search visibility",
+        "qualified traffic",
+        "long-term growth",
       ];
 
       const tl = gsap.timeline({
@@ -40,26 +40,21 @@ export default function AdvancedSEO() {
 
       words.forEach((word) => {
         tl.to(typeRef.current, {
-          text: {
-            value: word,
-            delimiter: "",
-          },
-          duration: word.length * 0.08, // smooth typing speed
+          text: { value: word, delimiter: "" },
+          duration: word.length * 0.08,
           ease: "none",
         })
-          .to({}, { duration: 1.2 }) // calm pause
+          .to({}, { duration: 1.2 })
           .to(typeRef.current, {
             text: "",
-            duration: word.length * 0.04, // soft erase
+            duration: word.length * 0.04,
             ease: "power1.inOut",
           })
           .to({}, { duration: 0.3 });
       });
 
-      /* ================= FEATURE CARDS ================= */
       gsap.from(cardsRef.current, {
         y: 50,
-        // opacity: 0,
         stagger: 0.15,
         duration: 0.9,
         ease: "power3.out",
@@ -69,10 +64,8 @@ export default function AdvancedSEO() {
         },
       });
 
-      /* ================= PROCESS STEPS ================= */
       gsap.from(stepsRef.current, {
         y: 40,
-        // opacity: 0,
         stagger: 0.2,
         duration: 0.8,
         ease: "power3.out",
@@ -82,10 +75,8 @@ export default function AdvancedSEO() {
         },
       });
 
-      /* ================= STATS ================= */
       gsap.from(statsRef.current, {
         y: 30,
-        // opacity: 0,
         stagger: 0.15,
         duration: 0.8,
         scrollTrigger: {
@@ -94,10 +85,8 @@ export default function AdvancedSEO() {
         },
       });
 
-      /* ================= CTA ================= */
       gsap.from(ctaRef.current, {
         scale: 0.95,
-        // opacity: 0,
         duration: 1,
         scrollTrigger: {
           trigger: ctaRef.current,
@@ -111,23 +100,33 @@ export default function AdvancedSEO() {
 
   return (
     <>
+      {/* ✅ SEO META */}
+      <Helmet>
+        <title>
+          SEO Services Agency | Grow Traffic & Rankings – Creative Spark
+        </title>
+        <meta
+          name="description"
+          content="Professional SEO services focused on rankings, traffic growth, and long-term visibility. Get a free SEO audit today."
+        />
+        <link rel="canonical" href="https://creativespark.in/services/seo" />
+      </Helmet>
+
       {/* ================= HERO ================= */}
       <section
         ref={heroRef}
         className="relative py-36 bg-[#0B0B0B] text-white overflow-hidden"
       >
-        {/* Gold glow */}
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#C6A75E]/15 blur-[220px]" />
 
         <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-          {/* LEFT */}
           <div>
             <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
-              Advanced SEO
+              SEO Services
             </p>
 
             <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-              SEO built for
+              Advanced SEO services for
               <br />
               <span className="text-[#C6A75E] relative">
                 <span ref={typeRef}></span>
@@ -136,32 +135,32 @@ export default function AdvancedSEO() {
             </h1>
 
             <p className="mt-8 text-lg text-gray-400 max-w-xl">
-              We design SEO systems that improve visibility, attract the right
-              audience, and convert traffic into measurable business growth.
+              We provide advanced SEO services that improve search visibility,
+              attract qualified traffic, and convert visitors into measurable
+              business growth.
             </p>
 
-            {/* FEATURES */}
             <div className="mt-14 grid sm:grid-cols-2 gap-8">
               {[
                 {
                   icon: <Search />,
-                  title: "Keyword Intelligence",
-                  desc: "Target high-intent searches that actually convert.",
+                  title: "Keyword Research & Intent",
+                  desc: "Target high-intent keywords that attract customers, not just traffic.",
                 },
                 {
                   icon: <TrendingUp />,
-                  title: "Ranking Growth",
-                  desc: "Data-driven strategies focused on long-term results.",
+                  title: "SEO Ranking Growth",
+                  desc: "Data-driven SEO strategies focused on sustainable results.",
                 },
                 {
                   icon: <Globe />,
-                  title: "Global SEO",
-                  desc: "Optimized for regions, languages, and scale.",
+                  title: "Local & Global SEO",
+                  desc: "Search engine optimization for regions, languages, and scale.",
                 },
                 {
                   icon: <BarChart3 />,
-                  title: "Transparent Reporting",
-                  desc: "Clear insights, real metrics, no guesswork.",
+                  title: "SEO Reporting & Analytics",
+                  desc: "Transparent SEO reporting with clear metrics and insights.",
                 },
               ].map((item, i) => (
                 <div
@@ -179,14 +178,13 @@ export default function AdvancedSEO() {
             </div>
           </div>
 
-          {/* RIGHT */}
           <div className="relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur">
             <div className="space-y-6">
               {[
-                { icon: <FileSearch />, title: "Audit" },
-                { icon: <Settings />, title: "Optimize" },
-                { icon: <PenTool />, title: "Content" },
-                { icon: <Rocket />, title: "Scale" },
+                { icon: <FileSearch />, title: "SEO Audit" },
+                { icon: <Settings />, title: "Technical Optimization" },
+                { icon: <PenTool />, title: "Content & On-Page SEO" },
+                { icon: <Rocket />, title: "Scale Rankings" },
               ].map((step, i) => (
                 <div
                   key={i}
@@ -208,10 +206,10 @@ export default function AdvancedSEO() {
       <section className="py-28 bg-black text-white">
         <div className="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
           {[
-            { value: "300%", label: "Traffic Growth" },
-            { value: "120+", label: "Top-3 Rankings" },
-            { value: "5×", label: "ROI Increase" },
-            { value: "90%", label: "Lead Conversion" },
+            { value: "300%", label: "Organic Traffic Growth" },
+            { value: "120+", label: "Top-3 Google Rankings" },
+            { value: "5×", label: "SEO ROI Increase" },
+            { value: "90%", label: "Lead Conversion Rate" },
           ].map((s, i) => (
             <div
               key={i}
@@ -239,8 +237,8 @@ export default function AdvancedSEO() {
           </h3>
 
           <p className="mt-6 text-lg text-gray-400">
-            Let’s build a search strategy designed for sustainable, measurable
-            growth.
+            Let’s build a search engine optimization strategy designed for
+            sustainable, measurable business growth.
           </p>
 
           <a

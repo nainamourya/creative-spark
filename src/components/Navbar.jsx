@@ -1,3 +1,14 @@
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <title>Creative Spark – Web Design, SEO & Branding Agency</title>
+  <meta
+    name="description"
+    content="Creative Spark is a premium web design and SEO agency helping brands grow with high-performance websites and digital strategy."
+  />
+  <link rel="canonical" href="https://creativespark.in/" />
+</Helmet>;
+
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";

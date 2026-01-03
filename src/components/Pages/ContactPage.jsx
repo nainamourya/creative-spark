@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { gsap } from "gsap";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function ContactPage() {
   const form = useRef();
@@ -12,7 +13,6 @@ export default function ContactPage() {
   useEffect(() => {
     gsap.from(pageRef.current, {
       y: 60,
-      // opacity: 0,
       duration: 1,
       ease: "power3.out",
     });
@@ -43,6 +43,16 @@ export default function ContactPage() {
       ref={pageRef}
       className="min-h-screen bg-[#0B0B0B] text-white pt-32 pb-32"
     >
+      {/* ✅ SEO META */}
+      <Helmet>
+        <title>Contact Creative Spark | Start Your Digital Project</title>
+        <meta
+          name="description"
+          content="Get in touch with Creative Spark to discuss website design, SEO, branding, or digital growth. We respond within 24 hours."
+        />
+        <link rel="canonical" href="https://creativespark.in/contact" />
+      </Helmet>
+
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
         {/* LEFT – COPY */}
         <div>

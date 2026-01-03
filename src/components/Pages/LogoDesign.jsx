@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { PenTool, Layers, Sparkles, Shapes, ArrowUpRight } from "lucide-react";
 
@@ -10,7 +11,6 @@ export default function LogoDesign() {
     const ctx = gsap.context(() => {
       gsap.from(revealRefs.current, {
         y: 50,
-        // opacity: 0,
         stagger: 0.14,
         duration: 0.9,
         ease: "power3.out",
@@ -22,6 +22,19 @@ export default function LogoDesign() {
 
   return (
     <main ref={sectionRef} className="bg-[#0B0B0B] text-white overflow-hidden">
+      {/* ✅ SEO META */}
+      <Helmet>
+        <title>Logo Design & Brand Identity Services</title>
+        <meta
+          name="description"
+          content="Timeless logo and brand identity design services crafted for clarity, trust, and recognition."
+        />
+        <link
+          rel="canonical"
+          href="https://creativespark.in/services/logo-design"
+        />
+      </Helmet>
+
       {/* ================= HERO ================= */}
       <section className="relative py-36 px-6 text-center">
         {/* Gold ambient glow */}
@@ -32,25 +45,28 @@ export default function LogoDesign() {
           className="relative max-w-5xl mx-auto"
         >
           <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
-            Logo & Brand Identity
+            Logo Design & Brand Identity
           </p>
 
           <h1 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-            Logos crafted with
+            Professional logo design
             <br />
-            <span className="text-[#C6A75E]">meaning & precision</span>
+            <span className="text-[#C6A75E]">
+              crafted with meaning & precision
+            </span>
           </h1>
 
           <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-            We design timeless logos and brand marks that communicate trust,
-            clarity, and credibility — built to scale with your brand.
+            We provide professional logo design and brand identity services that
+            communicate trust, clarity, and credibility — built to scale with
+            your business.
           </p>
 
           <a
             href="/contact"
             className="inline-flex mt-10 items-center gap-3 px-10 py-4 rounded-full bg-[#C6A75E] text-black font-semibold hover:scale-105 transition"
           >
-            Start Your Brand <ArrowUpRight />
+            Start Your Brand Identity <ArrowUpRight />
           </a>
         </div>
       </section>
@@ -62,17 +78,21 @@ export default function LogoDesign() {
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
               Branding is not decoration.
               <br />
-              <span className="text-[#C6A75E]">It’s communication.</span>
+              <span className="text-[#C6A75E]">
+                It’s strategic communication.
+              </span>
             </h2>
 
             <p className="mt-8 text-lg text-gray-400 leading-relaxed max-w-xl">
-              A logo is the foundation of your brand system. It must work across
-              screens, cultures, and time — without relying on trends.
+              A logo is the foundation of your brand identity system. It must
+              work across platforms, screens, cultures, and time — without
+              relying on trends.
             </p>
 
             <p className="mt-6 text-lg text-gray-400 leading-relaxed max-w-xl">
-              We focus on form, meaning, and usability to create logos that feel
-              confident, premium, and instantly recognizable.
+              Our logo design process focuses on form, meaning, and usability to
+              create brand marks that feel confident, premium, and instantly
+              recognizable.
             </p>
           </div>
 
@@ -82,8 +102,9 @@ export default function LogoDesign() {
           >
             <Layers className="w-16 h-16 text-[#C6A75E] mb-6" />
             <p className="text-lg text-gray-300 leading-relaxed">
-              Every logo we design is built as a system — adaptable, scalable,
-              and aligned with your brand’s long-term vision.
+              Every logo we design is built as a scalable brand system —
+              adaptable, flexible, and aligned with your long-term business
+              vision.
             </p>
           </div>
         </div>
@@ -95,23 +116,23 @@ export default function LogoDesign() {
           {[
             {
               icon: <PenTool />,
-              title: "Concept-driven",
-              desc: "Each logo starts with strategy, not sketches.",
+              title: "Concept-driven logo design",
+              desc: "Every logo starts with strategy, not decoration.",
             },
             {
               icon: <Shapes />,
-              title: "Custom crafted",
+              title: "Custom logo creation",
               desc: "Designed from scratch — no templates, ever.",
             },
             {
               icon: <Sparkles />,
-              title: "Timeless aesthetic",
-              desc: "Minimal forms that age gracefully.",
+              title: "Timeless brand aesthetics",
+              desc: "Minimal logo systems that age gracefully.",
             },
             {
               icon: <Layers />,
-              title: "Scalable systems",
-              desc: "Built to work across all touchpoints.",
+              title: "Scalable brand systems",
+              desc: "Logos designed to work across all brand touchpoints.",
             },
           ].map((item, i) => (
             <div
@@ -139,19 +160,31 @@ export default function LogoDesign() {
             ref={(el) => (revealRefs.current[7] = el)}
             className="text-4xl md:text-5xl font-extrabold mb-20"
           >
-            Our branding process
+            Our logo design process
           </h2>
 
           <div className="grid md:grid-cols-4 gap-12">
             {[
-              { step: "01", title: "Research", desc: "Brand & market clarity" },
+              {
+                step: "01",
+                title: "Research",
+                desc: "Brand discovery & market clarity",
+              },
               {
                 step: "02",
                 title: "Concept",
-                desc: "Visual direction & meaning",
+                desc: "Visual direction & brand meaning",
               },
-              { step: "03", title: "Refine", desc: "Precision & balance" },
-              { step: "04", title: "Deliver", desc: "Brand-ready assets" },
+              {
+                step: "03",
+                title: "Refine",
+                desc: "Precision, balance & consistency",
+              },
+              {
+                step: "04",
+                title: "Deliver",
+                desc: "Brand-ready logo assets",
+              },
             ].map((item, i) => (
               <div
                 key={i}
@@ -178,12 +211,12 @@ export default function LogoDesign() {
           <h2 className="text-4xl md:text-5xl font-extrabold">
             Let’s create a logo
             <br />
-            <span className="text-[#C6A75E]">your brand can own</span>
+            <span className="text-[#C6A75E]">your brand can truly own</span>
           </h2>
 
           <p className="mt-8 text-lg text-gray-400">
-            A strong brand starts with a mark that feels intentional and
-            unforgettable.
+            A strong brand identity starts with a logo that feels intentional,
+            distinctive, and unforgettable.
           </p>
 
           <a

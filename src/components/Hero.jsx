@@ -35,13 +35,13 @@ export default function Hero() {
   const typeWords = [
     "Web Design",
     "Advanced SEO",
-    "Brand Identity",
+    "React Development",
     "Digital Growth",
   ];
 
   const [index, setIndex] = useState(0);
 
-  // Entrance animations + typewriter
+  /* Animations */
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, { y: 80, duration: 1, ease: "power4.out" });
@@ -65,57 +65,29 @@ export default function Hero() {
         ease: "sine.inOut",
       });
 
-      // Typewriter
-      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.8 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
       typeWords.forEach((word) => {
-        tl.to(typeRef.current, {
-          text: word,
-          duration: 1.2,
-          ease: "none",
-        })
+        tl.to(typeRef.current, { text: word, duration: 1 })
           .to({}, { duration: 1 })
-          .to(typeRef.current, {
-            text: "",
-            duration: 0.6,
-            ease: "none",
-          });
+          .to(typeRef.current, { text: "", duration: 0.5 });
       });
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  // 🔁 Image + content fade slider
+  /* Slider */
   useEffect(() => {
-    gsap.fromTo(
-      sliderRef.current,
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }
-    );
-
     const interval = setInterval(() => {
-      gsap.to(sliderRef.current, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.5,
-        onComplete: () => {
-          setIndex((prev) => (prev + 1) % slides.length);
-          gsap.to(sliderRef.current, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.8,
-          });
-        },
-      });
+      setIndex((prev) => (prev + 1) % slides.length);
     }, 3500);
-
     return () => clearInterval(interval);
-  }, [index]);
+  }, [slides.length]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#0B0B0B] text-white"
+      className="relative min-h-screen flex items-center bg-[#0B0B0B] text-white overflow-hidden"
     >
       {/* Glow background */}
       <div className="absolute inset-0">
@@ -134,17 +106,25 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* LEFT */}
         <div>
+          {/* ✅ SEO-OPTIMIZED H1 */}
           <h1
             ref={titleRef}
             className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
           >
-            Turning Ideas Into <span className="text-[#C6A75E]">Premium</span>
-            <br /> Digital Experiences
+            Web Design & SEO Agency for{" "}
+            <span className="text-[#C6A75E]">Growing Businesses</span>
           </h1>
 
+          {/* Animated keywords (visual) */}
           <p className="mt-4 text-lg md:text-xl font-semibold text-[#C6A75E]">
             <span ref={typeRef}></span>
             <span className="animate-pulse">|</span>
+          </p>
+
+          {/* ✅ Static SEO reinforcement (Google reads this) */}
+          <p className="sr-only">
+            We provide web design, advanced SEO, React development, and digital
+            growth services for startups and businesses.
           </p>
 
           <p
@@ -152,7 +132,7 @@ export default function Hero() {
             className="mt-6 text-lg md:text-xl text-gray-400 max-w-xl"
           >
             We help brands grow with strategy-first design, modern development,
-            and digital solutions built to perform.
+            and performance-driven SEO solutions.
           </p>
 
           <div ref={btnsRef} className="mt-10 flex gap-4">
@@ -165,21 +145,22 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT – IMAGE + CONTENT SLIDER */}
+        {/* RIGHT */}
         <div
           ref={sliderRef}
           className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl"
         >
           <img
             src={slides[index].img}
-            alt={slides[index].title}
+            alt={`${slides[index].title} service example`}
+            loading="lazy"
             className="w-full h-56 object-cover"
           />
 
           <div className="p-8">
-            <h3 className="text-3xl font-bold text-[#C6A75E]">
+            <h2 className="text-3xl font-bold text-[#C6A75E]">
               {slides[index].title}
-            </h3>
+            </h2>
             <p className="mt-3 text-gray-300 text-lg">{slides[index].desc}</p>
             <div className="mt-6 h-[2px] w-20 bg-[#C6A75E]" />
           </div>
