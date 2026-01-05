@@ -10,7 +10,6 @@ export default function Footer() {
     const ctx = gsap.context(() => {
       gsap.from(".footer-item", {
         y: 30,
-        // opacity: 0,
         stagger: 0.12,
         duration: 0.8,
         ease: "power3.out",
@@ -91,6 +90,13 @@ export default function Footer() {
             </li>
             <li className="hover:text-[#C6A75E] transition cursor-pointer">
               Cookies Policy
+            </li>
+
+            {/* ✅ AI DISCOVERY LINK */}
+            <li>
+              <a href="/llm.txt" className="hover:text-[#C6A75E] transition">
+                I am AI
+              </a>
             </li>
           </ul>
         </div>
