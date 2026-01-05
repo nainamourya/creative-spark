@@ -9,9 +9,10 @@ import Services from "./components/Services";
 import CTASection from "./components/CTASection";
 import BlogSection from "./components/BlogSection";
 import About from "./components/Pages/About";
-import WhatsAppButton from "./components/WhatsAppButton"; // ✅ ADD THIS
+import WhatsAppButton from "./components/WhatsAppButton";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; // ✅ FIX ADDED
 
 import WebsiteDesign from "./components/Pages/WebsiteDesign";
 import AdvancedSEO from "./components/Pages/AdvancedSEO";
@@ -30,11 +31,23 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* ✅ Home page */}
+        {/* ✅ HOME PAGE */}
         <Route
           path="/"
           element={
             <>
+              {/* ✅ HOME SEO */}
+              <Helmet>
+                <title>
+                  Creative Spark – Web Design, SEO & Branding Agency
+                </title>
+                <meta
+                  name="description"
+                  content="Creative Spark is a premium web design and SEO agency helping brands grow with high-performance websites and digital strategy."
+                />
+                <link rel="canonical" href="https://creativespark.in/" />
+              </Helmet>
+
               <Hero />
               <AboutUs />
               <Services />
@@ -44,14 +57,14 @@ function App() {
           }
         />
 
-        {/* ✅ Pages */}
+        {/* ✅ PAGES */}
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/thank-you" element={<ThankYou />} />
 
-        {/* ✅ Services */}
+        {/* ✅ SERVICES */}
         <Route path="/services/website-design" element={<WebsiteDesign />} />
         <Route path="/services/advanced-seo" element={<AdvancedSEO />} />
         <Route path="/services/logo-design" element={<LogoDesign />} />
@@ -60,7 +73,7 @@ function App() {
 
       <Footer />
 
-      {/* ✅ WhatsApp Floating Button (GLOBAL) */}
+      {/* ✅ GLOBAL WHATSAPP BUTTON */}
       <WhatsAppButton />
     </Router>
   );
