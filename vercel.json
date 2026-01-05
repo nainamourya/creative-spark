@@ -3,6 +3,16 @@
   "outputDirectory": "dist",
   "routes": [
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1",
+      "status": 200
+    },
+    {
+      "src": "/llm.txt",
+      "dest": "/llm.txt",
+      "status": 200
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html",
       "status": 200
