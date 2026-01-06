@@ -36,7 +36,7 @@ export default function Footer() {
         {/* BRAND */}
         <div className="footer-item space-y-6">
           <img
-            src="/img/creative-spark-logo.png"
+            src="/img/creative-spark.png"
             alt="Creativespark Logo"
             className="h-10 w-auto object-contain"
           />
