@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import footerLogo from "../assets/creative-spark.png";
 export default function Footer() {
   const footerRef = useRef(null);
 
@@ -35,11 +35,13 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-14">
         {/* BRAND */}
         <div className="footer-item space-y-6">
-          <img
-            src="/img/creative-spark.png"
-            alt="Creativespark Logo"
-            className="h-10 w-auto object-contain"
-          />
+          <Link to="/" className="inline-block">
+            <img
+              src={footerLogo}
+              alt="CreativeSpark Logo"
+              className="h-10 w-auto object-contain hover:opacity-90 transition"
+            />
+          </Link>
           <p className="text-sm leading-relaxed max-w-sm">
             We design and develop premium digital experiences that help brands
             grow, convert, and stand out in the modern web.
