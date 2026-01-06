@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+// import logo from "../assets/creative-spark-nav.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Navbar() {
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* LOGO */}
           {/* LOGO */}
           <Link to="/" className="flex items-center">
             <img
@@ -99,7 +101,7 @@ export default function Navbar() {
           <div className="p-6 flex justify-between items-center border-b border-white/10">
             <Link to="/" onClick={() => setOpen(false)}>
               <img
-                src="/img/creative-spark-logo.png"
+                src="/img/creative-spark-nav.png"
                 alt="Creativespark Logo"
                 className="h-8 w-auto"
               />
