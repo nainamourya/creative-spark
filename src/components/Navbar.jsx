@@ -27,7 +27,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link to="/" className="flex items-center">
             <img
-              src="public/img/creative-spark-nav.png"
+              src="img/creative-spark-nav.png"
               alt="Creativespark Logo"
               className="h-8 md:h-10 w-auto object-contain hover:scale-105 transition-transform"
             />
