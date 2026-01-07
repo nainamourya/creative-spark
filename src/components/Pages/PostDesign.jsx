@@ -22,8 +22,8 @@ export default function PostDesign() {
   }, []);
 
   return (
-    <main ref={sectionRef} className="bg-[#0B0B0B] text-white">
-      {/* ✅ SEO META */}
+    <main ref={sectionRef} className="bg-[#0B0B0B] text-white overflow-hidden">
+      {/* ================= SEO META ================= */}
       <Helmet>
         <title>Content & Social Media Design Services | Creative Spark</title>
         <meta
@@ -38,7 +38,6 @@ export default function PostDesign() {
 
       {/* ================= HERO ================= */}
       <section className="relative py-36 px-6 text-center overflow-hidden">
-        {/* Gold ambient glow */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#C6A75E]/15 blur-[220px]" />
 
         <div
@@ -188,6 +187,116 @@ export default function PostDesign() {
                 </p>
                 <h4 className="text-xl font-semibold">{item.title}</h4>
                 <p className="mt-2 text-gray-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SEO CONTENT (MATCHED) ================= */}
+      <section className="relative py-32 bg-black overflow-hidden">
+        {/* gold ambient background */}
+        <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+          <div className="w-[900px] h-[900px] bg-[#C6A75E]/15 blur-[260px]" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 space-y-14 text-gray-300">
+          <h2 className="text-4xl font-extrabold text-[#C6A75E]">
+            Social Media Post Design Services That Build Brand Visibility
+          </h2>
+
+          <p>
+            Creative Spark provides professional post design services for brands
+            that want to stand out across social media platforms. Our social
+            media designs are created to capture attention, communicate value,
+            and maintain visual consistency across every post.
+          </p>
+
+          <p>
+            In today’s digital landscape, visual content plays a critical role
+            in how brands are perceived. We design social media posts that align
+            with your brand identity while supporting marketing goals such as
+            engagement, reach, and conversions.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Strategic Social Media Design, Not Just Graphics
+          </h3>
+
+          <p>
+            Effective post design is not about random visuals — it is about
+            clear messaging and brand consistency. Our post design process
+            combines visual hierarchy, typography, and layout systems to ensure
+            every design feels intentional and professional.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Custom-designed social media posts</li>
+            <li>
+              Platform-optimized designs for Instagram, Facebook, LinkedIn, and
+              more
+            </li>
+            <li>Consistent brand colors, typography, and visual style</li>
+            <li>
+              Designs aligned with marketing campaigns and content strategy
+            </li>
+            <li>Engaging layouts that improve visibility and interaction</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Post Design for Businesses, Creators & Brands
+          </h3>
+
+          <p>
+            Whether you are a startup, growing business, or established brand,
+            our post design services are tailored to your audience and
+            objectives. We help brands maintain a professional and recognizable
+            presence across social platforms.
+          </p>
+
+          <p>
+            Our designs are flexible and scalable — allowing your brand to grow
+            while maintaining visual consistency across daily posts, campaigns,
+            and promotions.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Why Choose Creative Spark for Post Design?
+          </h3>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Brand-consistent social media design systems</li>
+            <li>Custom visuals designed for engagement</li>
+            <li>Platform-specific design expertise</li>
+            <li>Clean, modern, and professional layouts</li>
+            <li>Reliable turnaround and design support</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-white">
+            Frequently Asked Questions
+          </h3>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "Which platforms do you design posts for?",
+                a: "We design posts for all major platforms including Instagram, Facebook, LinkedIn, Twitter (X), and other digital channels based on your requirements.",
+              },
+              {
+                q: "Can you match my existing brand style?",
+                a: "Yes. All post designs follow your brand guidelines, including colors, fonts, and visual tone, to ensure consistency across platforms.",
+              },
+              {
+                q: "Do you offer ongoing post design support?",
+                a: "Absolutely. We offer recurring post design services for brands that need consistent, high-quality social media visuals.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-white/5 border border-white/10"
+              >
+                <p className="font-semibold text-white">{item.q}</p>
+                <p className="mt-2">{item.a}</p>
               </div>
             ))}
           </div>

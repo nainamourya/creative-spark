@@ -91,9 +91,9 @@ export default function BlogSection() {
       </Helmet>
 
       <section className="py-36 bg-[#0B0B0B] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-20">
+        <div className="max-w-7xl mx-auto px-6 mb-20 ">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold">
+            <p className="text-xs uppercase tracking-[0.4em] text-[#C6A75E] font-semibold center">
               Insights & Resources
             </p>
 

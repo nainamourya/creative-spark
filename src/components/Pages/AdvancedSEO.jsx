@@ -201,6 +201,7 @@ export default function AdvancedSEO() {
           </div>
         </div>
       </section>
+      {/*  */}
 
       {/* ================= STATS ================= */}
       <section className="py-28 bg-black text-white">
@@ -222,6 +223,117 @@ export default function AdvancedSEO() {
               <p className="mt-2 text-sm text-gray-400">{s.label}</p>
             </div>
           ))}
+        </div>
+      </section>
+      {/*  */}
+      {/* ================= SEO CONTENT ================= */}
+      <section className="py-32 bg-black text-gray-300">
+        <div className="max-w-5xl mx-auto px-6 space-y-12">
+          <h2 className="text-4xl font-extrabold text-white">
+            Advanced SEO Services That Drive Sustainable Growth
+          </h2>
+
+          <p>
+            At Creative Spark, we offer advanced SEO services designed to help
+            growing businesses improve search visibility, attract qualified
+            traffic, and convert visitors into customers. Our SEO strategies are
+            built for long-term performance — not short-term ranking tricks.
+          </p>
+
+          <p>
+            Unlike generic SEO agencies, we focus on search intent, technical
+            excellence, and content relevance. Every SEO campaign we run is
+            aligned with real business goals such as lead generation, revenue
+            growth, and brand authority.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-white">
+            Our SEO Strategy Is Built Around Results
+          </h3>
+
+          <p>
+            Successful SEO today requires more than keywords and backlinks. Our
+            SEO process combines technical optimization, on-page SEO, content
+            strategy, and performance analysis to build sustainable rankings
+            across competitive search landscapes.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>In-depth keyword research focused on buyer intent</li>
+            <li>Technical SEO audits to fix performance and crawl issues</li>
+            <li>On-page optimization for content, structure, and UX</li>
+            <li>Content strategy designed to rank and convert</li>
+            <li>Continuous performance tracking and refinement</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-white">
+            SEO Services for Startups, Businesses & Brands
+          </h3>
+
+          <p>
+            Whether you are a startup looking for early traction or an
+            established business aiming to scale, our SEO services are tailored
+            to your growth stage. We work with brands across industries to
+            improve rankings, visibility, and organic lead flow.
+          </p>
+
+          <p>
+            Our approach ensures your website is not only optimized for search
+            engines, but also for users — delivering fast performance, clear
+            messaging, and measurable results.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-white">
+            Why Choose Creative Spark as Your SEO Agency?
+          </h3>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Strategy-first SEO aligned with business goals</li>
+            <li>Transparent reporting and performance metrics</li>
+            <li>Ethical, long-term SEO practices</li>
+            <li>Expertise in technical, on-page, and content SEO</li>
+            <li>Proven frameworks for sustainable growth</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-white">
+            Frequently Asked Questions
+          </h3>
+
+          <div className="space-y-6">
+            <div>
+              <p className="font-semibold text-white">
+                How long does SEO take to show results?
+              </p>
+              <p>
+                SEO is a long-term strategy. Most websites start seeing
+                measurable improvements within 3 to 6 months, depending on
+                competition, website history, and content quality.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-semibold text-white">
+                Do you offer SEO services for small businesses?
+              </p>
+              <p>
+                Yes. We work with startups and small businesses to build strong
+                SEO foundations that support long-term growth and lead
+                generation.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-semibold text-white">
+                Is SEO better than paid advertising?
+              </p>
+              <p>
+                SEO and paid ads serve different purposes. SEO builds long-term,
+                compounding traffic, while paid ads provide immediate
+                visibility. Many businesses benefit from combining both
+                strategies.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

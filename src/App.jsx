@@ -22,6 +22,8 @@ import BlogPage from "./components/Pages/BlogPage";
 import BlogDetail from "./components/Pages/BlogDetail";
 import ContactPage from "./components/Pages/ContactPage";
 import ThankYou from "./components/Pages/ThankYou";
+import HomeFAQ from "./components/HomeFAQ";
+import AIFAQSection from "./components/AIFAQSection";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -70,7 +72,8 @@ function App() {
         <Route path="/services/logo-design" element={<LogoDesign />} />
         <Route path="/services/post-design" element={<PostDesign />} />
       </Routes>
-
+      <AIFAQSection />
+      <HomeFAQ />
       <Footer />
 
       {/* ✅ GLOBAL WHATSAPP BUTTON */}

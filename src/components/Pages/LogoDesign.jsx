@@ -22,7 +22,7 @@ export default function LogoDesign() {
 
   return (
     <main ref={sectionRef} className="bg-[#0B0B0B] text-white overflow-hidden">
-      {/* ✅ SEO META */}
+      {/* ================= SEO META ================= */}
       <Helmet>
         <title>Logo Design & Brand Identity Services</title>
         <meta
@@ -37,7 +37,6 @@ export default function LogoDesign() {
 
       {/* ================= HERO ================= */}
       <section className="relative py-36 px-6 text-center">
-        {/* Gold ambient glow */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#C6A75E]/15 blur-[220px]" />
 
         <div
@@ -180,11 +179,7 @@ export default function LogoDesign() {
                 title: "Refine",
                 desc: "Precision, balance & consistency",
               },
-              {
-                step: "04",
-                title: "Deliver",
-                desc: "Brand-ready logo assets",
-              },
+              { step: "04", title: "Deliver", desc: "Brand-ready logo assets" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -196,6 +191,112 @@ export default function LogoDesign() {
                 </p>
                 <h4 className="text-xl font-semibold">{item.title}</h4>
                 <p className="mt-2 text-gray-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SEO CONTENT (MATCHED) ================= */}
+      <section className="relative py-32 bg-black overflow-hidden">
+        {/* gold ambient background */}
+        <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+          <div className="w-[900px] h-[900px] bg-[#C6A75E]/15 blur-[260px]" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 space-y-14 text-gray-300">
+          <h2 className="text-4xl font-extrabold text-[#C6A75E]">
+            Logo Design & Brand Identity Services Built for Recognition
+          </h2>
+
+          <p>
+            Creative Spark provides professional logo design and brand identity
+            services for businesses that want to build trust, recognition, and
+            long-term brand value. A logo is not just a visual mark — it is the
+            core symbol of how your brand is perceived across platforms and
+            touchpoints.
+          </p>
+
+          <p>
+            Our logo design process focuses on clarity, meaning, and
+            scalability. Every logo we design is crafted to work seamlessly
+            across digital, print, and marketing channels while remaining
+            timeless and adaptable.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Strategic Logo Design, Not Decoration
+          </h3>
+
+          <p>
+            Effective logo design begins with understanding your business,
+            audience, and positioning. We design logos that communicate purpose
+            and personality — not trends. Our approach ensures your brand
+            identity remains relevant as your business grows.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Brand discovery and positioning analysis</li>
+            <li>Concept-driven logo ideation</li>
+            <li>Typography, color, and form exploration</li>
+            <li>Scalable logo systems for digital and print</li>
+            <li>Consistent brand identity guidelines</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Logo Design for Startups, Businesses & Brands
+          </h3>
+
+          <p>
+            Whether you are launching a startup, rebranding an existing
+            business, or refining your visual identity, our logo design services
+            are tailored to your goals. We help brands stand out with visual
+            systems that feel confident, premium, and memorable.
+          </p>
+
+          <p>
+            Our logos are designed to scale with your brand — ensuring
+            consistency across websites, social media, packaging, and marketing
+            campaigns.
+          </p>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Why Choose Creative Spark for Logo Design?
+          </h3>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Strategy-first logo design approach</li>
+            <li>Custom, original logo concepts</li>
+            <li>Minimal, timeless brand aesthetics</li>
+            <li>Scalable brand identity systems</li>
+            <li>Clear communication and collaborative process</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold text-[#C6A75E]">
+            Frequently Asked Questions
+          </h3>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "How long does logo design take?",
+                a: "Logo design timelines vary depending on research depth and revisions. Most logo projects are completed within 2 to 4 weeks.",
+              },
+              {
+                q: "Will I receive full brand-ready files?",
+                a: "Yes. We deliver complete logo assets suitable for web, print, and marketing use, ensuring consistency across all platforms.",
+              },
+              {
+                q: "Can you redesign an existing logo?",
+                a: "Absolutely. We redesign logos to improve clarity, scalability, and modern relevance while respecting existing brand equity.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-white/5 border border-white/10"
+              >
+                <p className="font-semibold text-white">{item.q}</p>
+                <p className="mt-2">{item.a}</p>
               </div>
             ))}
           </div>

@@ -68,7 +68,70 @@ const BLOG_DATA = {
       "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1600",
   },
 };
+const BLOG_INTRO = {
+  "website-design-cost-in-india": `
+Website design cost in India varies widely depending on business goals,
+features, and execution quality. Many businesses struggle to understand
+whether they should hire a freelancer, an agency, or build in-house.
 
+This guide breaks down real website pricing in India, what influences cost,
+and how design decisions impact conversion, performance, and long-term
+growth. Instead of focusing only on price, we explore value, scalability,
+and ROI — helping businesses make informed decisions.
+`,
+
+  "seo-vs-paid-ads": `
+SEO and paid advertising are two of the most common growth strategies for
+businesses, but choosing the right one can be confusing. Each approach
+offers unique advantages depending on budget, timeline, and business goals.
+
+This article compares SEO and paid ads from a strategic perspective,
+covering traffic quality, cost efficiency, long-term sustainability, and
+ROI. The goal is to help businesses decide when to invest in SEO, paid ads,
+or a balanced combination of both.
+`,
+
+  "digital-marketing-for-small-business": `
+Digital marketing has become essential for small businesses looking to
+compete, grow, and generate consistent leads. However, without a clear
+strategy, marketing efforts often feel scattered and ineffective.
+
+This guide explains how small businesses can build practical digital
+marketing systems that focus on visibility, trust, and conversion. We
+break down proven strategies that help businesses scale sustainably without
+wasting time or budget.
+`,
+
+  "modern-website-design-conversion": `
+Modern website design is no longer about aesthetics alone. Today’s websites
+must guide users, communicate trust, and convert visitors into customers
+efficiently.
+
+This article explores how conversion-focused design, UX psychology, and
+performance optimization work together to improve user experience and
+business outcomes. It’s written for brands that want websites that perform,
+not just look good.
+`,
+
+  "seo-and-performance-strategies-2025": `
+Search rankings today depend on more than keywords. Website performance,
+technical SEO, and user experience now play a major role in visibility and
+ranking stability.
+
+This guide covers modern SEO and performance strategies, including Core Web
+Vitals, technical optimization, and sustainable ranking practices designed
+for long-term growth.
+`,
+
+  "digital-marketing-brand-growth": `
+Strong brands are not built through random marketing efforts. They are built
+through systems that align content, positioning, and consistency.
+
+This article explains how digital marketing systems help brands establish
+authority, trust, and long-term growth. It focuses on strategy rather than
+tactics, making it relevant for founders and growing teams.
+`,
+};
 export default function BlogDetail() {
   const { slug } = useParams();
   const pageRef = useRef(null);
@@ -153,8 +216,8 @@ export default function BlogDetail() {
         </h1>
 
         {/* SUBTITLE */}
-        <p className="mt-6 text-lg text-gray-400 leading-relaxed">
-          {blog.description}
+        <p className="mt-6 text-lg text-gray-400 leading-relaxed whitespace-pre-line">
+          {BLOG_INTRO[slug] || blog.description}
         </p>
 
         {/* IMAGE */}
@@ -168,6 +231,7 @@ export default function BlogDetail() {
         </div>
 
         {/* CONTENT */}
+
         {/* (rest of your content stays SAME) */}
       </article>
     </main>

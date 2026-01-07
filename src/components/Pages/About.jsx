@@ -121,6 +121,94 @@ export default function About() {
             ))}
           </div>
         </section>
+        {/* ================= ABOUT SEO CONTENT ================= */}
+        <section className="mt-36 bg-black text-gray-300">
+          <div className="max-w-5xl mx-auto px-6 space-y-12">
+            <h2 className="text-4xl font-extrabold text-[#C6A75E]">
+              A Digital Agency Built on Strategy, Performance & Trust
+            </h2>
+
+            <p>
+              Creative Spark was founded with a simple belief — digital
+              experiences should do more than look good. They should perform,
+              convert, and support long-term business growth. As a web design
+              and SEO agency, we help brands build clarity in how they present
+              themselves online.
+            </p>
+
+            <p>
+              Our work sits at the intersection of design, technology, and
+              strategy. Every website, brand identity, and digital system we
+              create is designed with intent — aligning business goals with user
+              experience and search visibility.
+            </p>
+
+            <h3 className="text-2xl font-semibold text-[#C6A75E]">
+              Our Approach to Web Design & SEO
+            </h3>
+
+            <p>
+              We don’t believe in one-size-fits-all solutions. Every project
+              starts with understanding the business, the audience, and the
+              competitive landscape. This allows us to design digital
+              experiences that feel purposeful and scalable.
+            </p>
+
+            <ul className="list-disc pl-6 space-y-3">
+              <li>Strategy-first planning before design or development</li>
+              <li>User-focused web design with clear conversion paths</li>
+              <li>SEO-ready structure built for long-term visibility</li>
+              <li>Clean, performance-optimized development</li>
+              <li>Consistent brand systems across digital touchpoints</li>
+            </ul>
+
+            <h3 className="text-2xl font-semibold text-[#C6A75E]">
+              Who We Work With
+            </h3>
+
+            <p>
+              We work with startups, growing businesses, and established brands
+              that value clarity, quality, and sustainable growth. Our clients
+              come to us when they want more than just a website — they want a
+              digital foundation that supports their business vision.
+            </p>
+
+            <p>
+              Whether it’s launching a new brand, redesigning an existing
+              website, or improving search visibility, we collaborate closely
+              with clients to deliver results that feel intentional and
+              measurable.
+            </p>
+
+            <h3 className="text-2xl font-semibold text-[#C6A75E]">
+              Why Clients Choose Creative Spark
+            </h3>
+
+            <ul className="list-disc pl-6 space-y-3">
+              <li>Clear communication and transparent process</li>
+              <li>Focus on long-term value, not short-term trends</li>
+              <li>Attention to detail in design and execution</li>
+              <li>SEO and performance built into every project</li>
+              <li>Partnership mindset, not vendor relationship</li>
+            </ul>
+
+            <h3 className="text-2xl font-semibold text-[#C6A75E]">
+              Our Commitment
+            </h3>
+
+            <p>
+              We are committed to building digital experiences that our clients
+              can trust and grow with. Every project is approached with care,
+              consistency, and respect for the brand we are representing.
+            </p>
+
+            <p>
+              At Creative Spark, success is measured not just by visuals or
+              rankings, but by the confidence our clients feel in their digital
+              presence.
+            </p>
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="mt-36 text-center">
