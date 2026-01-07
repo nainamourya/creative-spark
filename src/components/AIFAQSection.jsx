@@ -69,7 +69,7 @@ export default function AIFAQSection() {
             how modern businesses use intelligent systems to grow faster and
             smarter.
           </p> */}
-          <h2 className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
+          <h2 className="mt-6 text-lg text-[#C6A75E] max-w-2xl mx-auto">
             AI won’t replace people — people who know how to use AI will replace
             those who don’t, just like in the computer era.
           </h2>
