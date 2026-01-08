@@ -41,12 +41,23 @@ function App() {
               {/* ✅ HOME SEO */}
               <Helmet>
                 <title>
-                  Creative Spark – Web Design, SEO & Branding Agency
+                  Creative Spark – Web Design, SEO & Branding Agency for Growing
+                  Businesses
                 </title>
+
                 <meta
                   name="description"
-                  content="Creative Spark is a premium web design and SEO agency helping brands grow with high-performance websites and digital strategy."
+                  content="Creative Spark is a web design, SEO, and branding agency helping businesses build high-converting websites, improve search visibility, and scale digitally."
                 />
+
+                <meta name="robots" content="index, follow" />
+                <meta name="googlebot" content="index, follow" />
+
+                <meta
+                  name="google-site-verification"
+                  content="oVo_cqmzL9j9lq-TNDOCVezfi9GbgXPO3cwB4RsEB6s"
+                />
+
                 <link rel="canonical" href="https://creativespark.in/" />
               </Helmet>
 
@@ -55,6 +66,8 @@ function App() {
               <Services />
               <CTASection />
               <BlogSection />
+              <AIFAQSection />
+              <HomeFAQ />
             </>
           }
         />
@@ -72,8 +85,7 @@ function App() {
         <Route path="/services/logo-design" element={<LogoDesign />} />
         <Route path="/services/post-design" element={<PostDesign />} />
       </Routes>
-      <AIFAQSection />
-      <HomeFAQ />
+
       <Footer />
 
       {/* ✅ GLOBAL WHATSAPP BUTTON */}

@@ -190,8 +190,26 @@ export default function BlogDetail() {
           })}
         </script>
       </Helmet>
-
-      <article className="max-w-4xl mx-auto px-6">
+      <section className="mt-20 p-10 rounded-3xl bg-white/5 border border-white/10">
+        <p className="text-gray-300">
+          Want to implement these strategies for your business? Explore our
+          <Link
+            to="/services/advanced-seo"
+            className="text-[#C6A75E] font-semibold mx-1"
+          >
+            advanced SEO services
+          </Link>
+          or
+          <Link
+            to="/services/website-design"
+            className="text-[#C6A75E] font-semibold mx-1"
+          >
+            conversion-focused website design
+          </Link>
+          to build long-term digital growth.
+        </p>
+      </section>
+      <article className="max-w-4xl mx-auto px-6 mt-8">
         {/* BACK */}
         <Link
           to="/blog"
