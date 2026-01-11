@@ -11,7 +11,7 @@ export default function About() {
           name="description"
           content="Learn about Creative Spark, a web design and SEO agency focused on building premium websites, strong brands, and growth-driven digital systems."
         />
-        <link rel="canonical" href="https://creativespark.in/about" />
+        <link rel="canonical" href="www.creativespark.in/about" />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">

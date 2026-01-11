@@ -1,7 +1,7 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import fs from "fs";
 
-const hostname = "https://www.creativespark.in";
+const hostname = "www.creativespark.in";
 const today = new Date().toISOString().split("T")[0];
 
 const links = [

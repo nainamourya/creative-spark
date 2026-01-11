@@ -115,7 +115,7 @@ export default function BlogPage() {
           name="description"
           content="Expert insights on SEO, web design, and digital marketing to help businesses grow, convert, and scale online."
         />
-        <link rel="canonical" href="https://creativespark.in/blog/" />
+        <link rel="canonical" href="www.creativespark.in/blog/" />
       </Helmet>
 
       <section

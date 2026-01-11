@@ -48,7 +48,7 @@ export default function WebsiteDesign() {
         />
         <link
           rel="canonical"
-          href="https://creativespark.in/services/website-design"
+          href="www.creativespark.in/services/website-design"
         />
       </Helmet>
 

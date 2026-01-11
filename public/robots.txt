@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.creativespark.in/sitemap.xml
+Sitemap: www.creativespark.in/sitemap.xml

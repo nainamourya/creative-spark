@@ -50,7 +50,7 @@ export default function ContactPage() {
           name="description"
           content="Get in touch with Creative Spark to discuss website design, SEO, branding, or digital growth. We respond within 24 hours."
         />
-        <link rel="canonical" href="https://creativespark.in/contact" />
+        <link rel="canonical" href="www.creativespark.in/contact" />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">

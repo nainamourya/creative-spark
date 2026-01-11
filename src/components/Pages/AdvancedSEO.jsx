@@ -109,7 +109,10 @@ export default function AdvancedSEO() {
           name="description"
           content="Professional SEO services focused on rankings, traffic growth, and long-term visibility. Get a free SEO audit today."
         />
-        <link rel="canonical" href="https://creativespark.in/services/seo" />
+        <link
+          rel="canonical"
+          href="www.creativespark.in/services/advanced-seo"
+        />
       </Helmet>
 
       {/* ================= HERO ================= */}

@@ -32,7 +32,7 @@ export default function PostDesign() {
         />
         <link
           rel="canonical"
-          href="https://creativespark.in/services/post-design"
+          href="www.creativespark.in/services/post-design"
         />
       </Helmet>
 

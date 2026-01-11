@@ -12,7 +12,7 @@ import About from "./components/Pages/About";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // ✅ FIX ADDED
+import { Helmet } from "react-helmet-async";
 
 import WebsiteDesign from "./components/Pages/WebsiteDesign";
 import AdvancedSEO from "./components/Pages/AdvancedSEO";
@@ -33,13 +33,13 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* ✅ HOME PAGE */}
+        {/* ================= HOME PAGE ================= */}
         <Route
           path="/"
           element={
             <>
-              {/* ✅ HOME SEO */}
               <Helmet>
+                {/* ===== BASIC SEO ===== */}
                 <title>
                   Creative Spark – Web Design, SEO & Branding Agency for Growing
                   Businesses
@@ -59,6 +59,58 @@ function App() {
                 />
 
                 <link rel="canonical" href="https://creativespark.in/" />
+
+                {/* ===== FAQ SCHEMA (HOME PAGE) ===== */}
+                <script type="application/ld+json">
+                  {`
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will AI replace web developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI will not replace skilled web developers, but it will change how they work. AI can automate repetitive tasks, while developers focus on strategy, architecture, performance, and business logic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will AI replace human jobs in web development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI may replace low-skill, repetitive tasks, but it cannot replace human creativity, problem-solving, and strategic thinking required for scalable and high-performing websites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI build a complete website without a developer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI can generate basic websites, but professional websites still require human developers for customization, security, performance optimization, SEO, and business alignment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI better than human web developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI is a powerful assistant, not a replacement. The best results come from combining AI efficiency with human expertise, experience, and strategic decision-making."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How will AI change the future of web development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI will accelerate development workflows, improve personalization, enhance SEO analysis, and automate testing, while human developers guide strategy and innovation."
+      }
+    }
+  ]
+}
+`}
+                </script>
               </Helmet>
 
               <Hero />
@@ -72,14 +124,14 @@ function App() {
           }
         />
 
-        {/* ✅ PAGES */}
+        {/* ================= OTHER PAGES ================= */}
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/thank-you" element={<ThankYou />} />
 
-        {/* ✅ SERVICES */}
+        {/* ================= SERVICES ================= */}
         <Route path="/services/website-design" element={<WebsiteDesign />} />
         <Route path="/services/advanced-seo" element={<AdvancedSEO />} />
         <Route path="/services/logo-design" element={<LogoDesign />} />
@@ -87,8 +139,6 @@ function App() {
       </Routes>
 
       <Footer />
-
-      {/* ✅ GLOBAL WHATSAPP BUTTON */}
       <WhatsAppButton />
     </Router>
   );

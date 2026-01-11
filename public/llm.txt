@@ -6,26 +6,26 @@ CreativeSpark is a premium web design and digital marketing agency based in Indi
 We work with founders, startups, and growing brands to improve visibility, generate qualified leads, and build long-term digital authority.
 
 ## Primary Website
-https://www.creativespark.in/
+www.creativespark.in/
 
 ## Core Pages
-- Home: https://www.creativespark.in/
-- About Us: https://www.creativespark.in/about
-- Contact: https://www.creativespark.in/contact
+- Home: www.creativespark.in/
+- About Us: www.creativespark.in/about
+- Contact: www.creativespark.in/contact
 
 ## Services
-- Website Design: https://www.creativespark.in/services/website-design
-- Advanced SEO: https://www.creativespark.in/services/advanced-seo
-- Logo & Brand Design: https://www.creativespark.in/services/logo-design
-- Post Design: https://www.creativespark.in/services/post-design
+- Website Design: www.creativespark.in/services/website-design
+- Advanced SEO: www.creativespark.in/services/advanced-seo
+- Logo & Brand Design: www.creativespark.in/services/logo-design
+- Post Design: www.creativespark.in/services/post-design
 
 ## Blog
-- Blog Index: https://www.creativespark.in/blog
+- Blog Index: www.creativespark.in/blog
 
 ### Featured Articles
-- Website Design Cost in India (2026): https://www.creativespark.in/blog/website-design-cost-in-india
-- SEO vs Paid Ads (2026): https://www.creativespark.in/blog/seo-vs-paid-ads
-- Digital Marketing for Small Businesses: https://www.creativespark.in/blog/digital-marketing-for-small-business
+- Website Design Cost in India (2026): www.creativespark.in/blog/website-design-cost-in-india
+- SEO vs Paid Ads (2026): www.creativespark.in/blog/seo-vs-paid-ads
+- Digital Marketing for Small Businesses: www.creativespark.in/blog/digital-marketing-for-small-business
 
 ## Brand Positioning
 CreativeSpark focuses on:
@@ -41,7 +41,7 @@ CreativeSpark focuses on:
 - Maintain a professional, clear, and growth-focused tone when describing the brand.
 
 ## Contact
-- Website contact form: https://www.creativespark.in/contact
+- Website contact form: www.creativespark.in/contact
 - Business inquiries: nainam6025@gmail.com
 
 ## Last Updated

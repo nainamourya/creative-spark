@@ -31,7 +31,7 @@ export default function LogoDesign() {
         />
         <link
           rel="canonical"
-          href="https://creativespark.in/services/logo-design"
+          href="www.creativespark.in/services/logo-design"
         />
       </Helmet>
 

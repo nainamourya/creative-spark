@@ -166,7 +166,7 @@ export default function BlogDetail() {
       <Helmet>
         <title>{blog.title} | CreativeSpark Blog</title>
         <meta name="description" content={blog.description} />
-        <link rel="canonical" href={`https://creativespark.in/blog/${slug}`} />
+        <link rel="canonical" href={`www.creativespark.in/blog/${slug}`} />
 
         {/* 🔹 OPTIONAL BUT STRONG: ARTICLE SCHEMA */}
         <script type="application/ld+json">
@@ -185,7 +185,7 @@ export default function BlogDetail() {
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://creativespark.in/blog/${slug}`,
+              "@id": `www.creativespark.in/blog/${slug}`,
             },
           })}
         </script>
