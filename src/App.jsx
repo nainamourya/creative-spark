@@ -58,7 +58,7 @@ function App() {
                   content="oVo_cqmzL9j9lq-TNDOCVezfi9GbgXPO3cwB4RsEB6s"
                 />
 
-                <link rel="canonical" href="https://creativespark.in/" />
+                <link rel="canonical" href="www.creativespark.in/" />
 
                 {/* ===== FAQ SCHEMA (HOME PAGE) ===== */}
                 <script type="application/ld+json">
